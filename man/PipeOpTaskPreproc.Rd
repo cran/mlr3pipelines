@@ -155,7 +155,7 @@ This method can be overloaded when inheriting \code{PipeOpTaskPreproc}, together
 (\code{\link[mlr3:Task]{Task}}) -> \code{character} \cr
 Selects which columns the \code{\link{PipeOp}} operates on, if \code{$train_dt()} and \code{$predict_dt()} are overloaded. This function
 is not called if \code{$train_task()} and \code{$predict_task()} are overloaded. In contrast to
-the \code{affect_columns} parameter. \code{select_cols} is for the \emph{ineriting class} to determine which columns
+the \code{affect_columns} parameter. \code{select_cols} is for the \emph{inheriting class} to determine which columns
 the operator should function on, e.g. based on feature type, while \code{affect_columns} is a way for the \emph{user}
 to limit the columns that a \code{\link{PipeOpTaskPreproc}} should operate on.\cr
 This method can optionally be overloaded when inheriting \code{\link{PipeOpTaskPreproc}}, together with \code{$train_dt()} and
@@ -176,9 +176,11 @@ Other PipeOps: \code{\link{PipeOpEnsemble}},
   \code{\link{mlr_pipeops_chunk}},
   \code{\link{mlr_pipeops_classbalancing}},
   \code{\link{mlr_pipeops_classifavg}},
+  \code{\link{mlr_pipeops_classweights}},
   \code{\link{mlr_pipeops_colapply}},
   \code{\link{mlr_pipeops_collapsefactors}},
   \code{\link{mlr_pipeops_copy}},
+  \code{\link{mlr_pipeops_encodeimpact}},
   \code{\link{mlr_pipeops_encodelmer}},
   \code{\link{mlr_pipeops_encode}},
   \code{\link{mlr_pipeops_featureunion}},

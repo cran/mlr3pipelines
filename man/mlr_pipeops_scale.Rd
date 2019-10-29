@@ -39,7 +39,7 @@ The \code{$state} is a named \code{list} with the \code{$state} elements inherit
 The mean of each numeric feature during training, or 0 if \code{center} is \code{FALSE}. Will be subtracted during the predict phase.
 \item \code{scale} :: \code{numeric}\cr
 The root mean square, defined as \code{sqrt(sum(x^2)/(length(x)-1))}, of each feature during training, or 1 if \code{scale} is FALSE.
-During predict phase, feaatures are divided by this.\cr
+During predict phase, features are divided by this.\cr
 This is 1 for features that are constant during training if \code{center} is \code{TRUE}, to avoid division-by-zero.
 }
 }
@@ -88,9 +88,11 @@ Other PipeOps: \code{\link{PipeOpEnsemble}},
   \code{\link{mlr_pipeops_chunk}},
   \code{\link{mlr_pipeops_classbalancing}},
   \code{\link{mlr_pipeops_classifavg}},
+  \code{\link{mlr_pipeops_classweights}},
   \code{\link{mlr_pipeops_colapply}},
   \code{\link{mlr_pipeops_collapsefactors}},
   \code{\link{mlr_pipeops_copy}},
+  \code{\link{mlr_pipeops_encodeimpact}},
   \code{\link{mlr_pipeops_encodelmer}},
   \code{\link{mlr_pipeops_encode}},
   \code{\link{mlr_pipeops_featureunion}},

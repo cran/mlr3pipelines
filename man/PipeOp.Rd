@@ -6,13 +6,13 @@
 \title{PipeOp}
 \format{Abstract \code{\link{R6Class}}.}
 \description{
-A \code{\link{PipeOp}} represents a tranformation of a given "input" into a given "output", with two stages: "training"
+A \code{\link{PipeOp}} represents a transformation of a given "input" into a given "output", with two stages: "training"
 and "prediction". It can be understood as a generalized function that not only has multiple inputs, but
 also multiple outputs (as well as two stages). The "training" stage is used when training a machine learning pipeline or
 fitting a statistical model, and the "predicting" stage is then used for making predictions
 on new data.
 
-To perform training, the \code{$train()} function is called which takes inputs and tranforms them, while simultaneously storing information
+To perform training, the \code{$train()} function is called which takes inputs and transforms them, while simultaneously storing information
 in its \code{$state} slot. For prediction, the \code{$predict()} function is called, where the \code{$state} information can be used to influence the transformation
 of the new data.
 
@@ -206,9 +206,11 @@ Other PipeOps: \code{\link{PipeOpEnsemble}},
   \code{\link{mlr_pipeops_chunk}},
   \code{\link{mlr_pipeops_classbalancing}},
   \code{\link{mlr_pipeops_classifavg}},
+  \code{\link{mlr_pipeops_classweights}},
   \code{\link{mlr_pipeops_colapply}},
   \code{\link{mlr_pipeops_collapsefactors}},
   \code{\link{mlr_pipeops_copy}},
+  \code{\link{mlr_pipeops_encodeimpact}},
   \code{\link{mlr_pipeops_encodelmer}},
   \code{\link{mlr_pipeops_encode}},
   \code{\link{mlr_pipeops_featureunion}},

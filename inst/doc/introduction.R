@@ -32,6 +32,9 @@ po$predict(list(single_line_task))[[1]]$data()
 ## ------------------------------------------------------------------------
 po$state
 
+## ----echo=FALSE----------------------------------------------------------
+knitr::include_graphics("figures/po_viz.png")
+
 ## ------------------------------------------------------------------------
 as.data.table(mlr_pipeops)[, c("key", "input.num", "output.num")]
 
@@ -56,8 +59,14 @@ pofu$input
 ## ------------------------------------------------------------------------
 mlr_pipeops$get("chunk", outnum = 3)$output
 
+## ----echo=FALSE----------------------------------------------------------
+knitr::include_graphics("figures/po_multi_alone.png")
+
 ## ------------------------------------------------------------------------
 # mlr_pipeops$get("backuplearner")
+
+## ----echo=FALSE----------------------------------------------------------
+knitr::include_graphics("figures/po_multi_viz.png")
 
 ## ------------------------------------------------------------------------
 gr = Graph$new()

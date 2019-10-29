@@ -38,6 +38,9 @@ expect_deep_clone = function(one, two) {
       if (length(path) > 1 && R6::is.R6(a) && "clone" %nin% names(a)) {
         return(invisible(NULL))  # don't check if smth is not cloneable
       }
+      if (identical(utils::tail(path, 1), c("[element train_task] 'train_task'"))) {
+        return(invisible(NULL))  # workaround for https://github.com/mlr-org/mlr3/issues/382
+      }
       label = sprintf("Object addresses differ at path %s", paste0(path, collapse = "->"))
       expect_true(addr_a != addr_b, label = label)
       expect_null(visited_b[[addr_a]], label = label)
@@ -143,7 +146,7 @@ expect_pipeop_class = function(poclass, constargs = list()) {
 # check that a do.call(poclass$new, constargs) behaves as a preprocessing pipeop should.
 # This entails
 #  - expect_pipeop_class
-#  - input / output both have length 1, type "Task"
+#  - input / output both have length 1, type "Task" or a subclass
 #  - training on non-task gives error
 #  - predicting on non-task gives error
 #  - training twice gives the same result (if `deterministic_train`)
@@ -182,10 +185,10 @@ expect_datapreproc_pipeop_class = function(poclass, constargs = list(), task,
   expect_equal(po$innum, 1)
   expect_equal(po$outnum, 1)
 
-  expect_equal(po$input$train, "Task")
-  expect_equal(po$input$predict, "Task")
-  expect_equal(po$output$train, "Task")
-  expect_equal(po$output$predict, "Task")
+  expect_true(are_types_compatible(po$input$train, "Task"))
+  expect_true(are_types_compatible(po$input$predict, "Task"))
+  expect_true(are_types_compatible(po$output$train, "Task"))
+  expect_true(are_types_compatible(po$output$predict, "Task"))
 
   expect_error(po$train(list(NULL)), "class.*Task.*but has class")
 
@@ -359,16 +362,19 @@ expect_datapreproc_pipeop_class = function(poclass, constargs = list(), task,
     }
   }
 
-  targetless = task$clone(deep = TRUE)$set_col_role(task$target_names, character(0))
-
-  po$train(list(task))
-  predicted = po$predict(list(task))[[1]]
-  predicted.targetless = po$predict(list(targetless))[[1]]
-
-  if (deterministic_predict) {
-    expect_equal(predicted$data(cols = predicted$feature_names),
-      predicted.targetless$data(cols = predicted.targetless$feature_names))
-  }
+  ## ## The following becomes relevant when mlr3 gets unsupervised tasks. We then want
+  ## ## to test them automatically here by creating the unsupervised tasks.
+  ##
+  ## targetless = task$clone(deep = TRUE)$set_col_role(task$target_names, character(0))
+  ##
+  ## po$train(list(task))
+  ## predicted = po$predict(list(task))[[1]]
+  ## predicted.targetless = po$predict(list(targetless))[[1]]
+  ##
+  ## if (deterministic_predict) {
+  ##   expect_equal(predicted$data(cols = predicted$feature_names),
+  ##     predicted.targetless$data(cols = predicted.targetless$feature_names))
+  ## }
 
 
   expect_shallow_clone(task, original_clone)  # test that task was not changed by all the training / prediction
