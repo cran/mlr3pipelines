@@ -352,20 +352,17 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>A list of available <code>PipeOp</code>s can be obtained from</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">  <span class="kw">library</span>(<span class="st">&quot;mlr3pipelines&quot;</span>)</a>
 <a class="sourceLine" id="cb3-2" title="2">  mlr_pipeops<span class="op">$</span><span class="kw">keys</span>()</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt;  [1] &quot;boxcox&quot;          &quot;branch&quot;          &quot;chunk&quot;          </span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;  [4] &quot;classbalancing&quot;  &quot;classifavg&quot;      &quot;classweights&quot;   </span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt;  [7] &quot;colapply&quot;        &quot;collapsefactors&quot; &quot;copy&quot;           </span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; [10] &quot;encode&quot;          &quot;encodeimpact&quot;    &quot;encodelmer&quot;     </span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt; [13] &quot;featureunion&quot;    &quot;filter&quot;          &quot;fixfactors&quot;     </span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt; [16] &quot;histbin&quot;         &quot;ica&quot;             &quot;imputehist&quot;     </span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt; [19] &quot;imputemean&quot;      &quot;imputemedian&quot;    &quot;imputenewlvl&quot;   </span></a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt; [22] &quot;imputesample&quot;    &quot;kernelpca&quot;       &quot;learner&quot;        </span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt; [25] &quot;learner_cv&quot;      &quot;missind&quot;         &quot;modelmatrix&quot;    </span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt; [28] &quot;mutate&quot;          &quot;nop&quot;             &quot;pca&quot;            </span></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt; [31] &quot;quantilebin&quot;     &quot;regravg&quot;         &quot;removeconstants&quot;</span></a>
-<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt; [34] &quot;scale&quot;           &quot;scalemaxabs&quot;     &quot;scalerange&quot;     </span></a>
-<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; [37] &quot;select&quot;          &quot;smote&quot;           &quot;spatialsign&quot;    </span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; [40] &quot;subsample&quot;       &quot;unbranch&quot;        &quot;yeojohnson&quot;</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt;  [1] &quot;boxcox&quot;          &quot;branch&quot;          &quot;chunk&quot;           &quot;classbalancing&quot; </span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;  [5] &quot;classifavg&quot;      &quot;classweights&quot;    &quot;colapply&quot;        &quot;collapsefactors&quot;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt;  [9] &quot;copy&quot;            &quot;encode&quot;          &quot;encodeimpact&quot;    &quot;encodelmer&quot;     </span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; [13] &quot;featureunion&quot;    &quot;filter&quot;          &quot;fixfactors&quot;      &quot;histbin&quot;        </span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt; [17] &quot;ica&quot;             &quot;imputehist&quot;      &quot;imputemean&quot;      &quot;imputemedian&quot;   </span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt; [21] &quot;imputenewlvl&quot;    &quot;imputesample&quot;    &quot;kernelpca&quot;       &quot;learner&quot;        </span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt; [25] &quot;learner_cv&quot;      &quot;missind&quot;         &quot;modelmatrix&quot;     &quot;mutate&quot;         </span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt; [29] &quot;nop&quot;             &quot;pca&quot;             &quot;quantilebin&quot;     &quot;regravg&quot;        </span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt; [33] &quot;removeconstants&quot; &quot;scale&quot;           &quot;scalemaxabs&quot;     &quot;scalerange&quot;     </span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt; [37] &quot;select&quot;          &quot;smote&quot;           &quot;spatialsign&quot;     &quot;subsample&quot;      </span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt; [41] &quot;unbranch&quot;        &quot;yeojohnson&quot;</span></a></code></pre></div>
 <p>First we define the required <code>PipeOp</code>s:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">  op1 =<span class="st"> </span>PipeOpScale<span class="op">$</span><span class="kw">new</span>()</a>
 <a class="sourceLine" id="cb4-2" title="2">  op2 =<span class="st"> </span>PipeOpPCA<span class="op">$</span><span class="kw">new</span>()</a>

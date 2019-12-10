@@ -1,4 +1,4 @@
-## ---- include = FALSE----------------------------------------------------
+## ---- include = FALSE---------------------------------------------------------
 knitr::opts_chunk$set(
   cache = FALSE,
   collapse = TRUE,
@@ -9,37 +9,37 @@ compiler::enableJIT(0)
 library("mlr3")
 library("mlr3pipelines")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
   library("mlr3")
   task = mlr_tasks$get("iris")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
   test.idx = sample(seq_len(task$nrow), 30)
   train.idx = setdiff(seq_len(task$nrow), test.idx)
   # Set task to only use train indexes
   task$row_roles$use = train.idx
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
   library("mlr3pipelines")
   mlr_pipeops$keys()
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
   op1 = PipeOpScale$new()
   op2 = PipeOpPCA$new()
   op3 = PipeOpLearner$new(learner = mlr_learners$get("classif.rpart"))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
   linear_pipeline = op1 %>>% op2 %>>% op3
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
   linear_pipeline$train(task)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
   # predict on test.idx
   task$row_roles$use = test.idx
   linear_pipeline$predict(task)
 
-## ---- eval = FALSE-------------------------------------------------------
+## ---- eval = FALSE------------------------------------------------------------
 #  library("mlr")
 #  # We first create a learner
 #  lrn = makeLearner("classif.rpart")
@@ -51,7 +51,7 @@ library("mlr3pipelines")
 #  # Afterwards, we can train the resulting learner on a task
 #  train(lrn, iris.task)
 
-## ---- eval = FALSE-------------------------------------------------------
+## ---- eval = FALSE------------------------------------------------------------
 #  library("mlr3")
 #  library("mlr3pipelines")
 #  library("mlr3filters")
@@ -65,7 +65,7 @@ library("mlr3pipelines")
 #  # And convert to a 'GraphLearner'
 #  learner = GraphLearner$new(id = "Pipeline", pipeline)
 
-## ---- eval = FALSE-------------------------------------------------------
+## ---- eval = FALSE------------------------------------------------------------
 #  from sklearn.pipeline import Pipeline, FeatureUnion
 #  from sklearn.model_selection import GridSearchCV
 #  from sklearn.svm import SVC
@@ -101,7 +101,7 @@ library("mlr3pipelines")
 #  grid_search = GridSearchCV(pipeline, param_grid=param_grid, cv=5, verbose=10)
 #  grid_search.fit(X, y)
 
-## ---- eval = FALSE-------------------------------------------------------
+## ---- eval = FALSE------------------------------------------------------------
 #  library("mlr3verse")
 #  iris = mlr_tasks$get("iris")
 #  
@@ -132,7 +132,7 @@ library("mlr3pipelines")
 #  # Set the learner to the optimal values and train
 #  learner$param_set$values = tuner$tune_result()$values
 
-## ---- eval = FALSE-------------------------------------------------------
+## ---- eval = FALSE------------------------------------------------------------
 #  library("tidymodels")
 #  library("rsample")
 #  data("credit_data")
@@ -154,7 +154,7 @@ library("mlr3pipelines")
 #  train_data <- bake(trained_rec, new_data = credit_train)
 #  test_data  <- bake(trained_rec, new_data = credit_test)
 
-## ---- eval = FALSE-------------------------------------------------------
+## ---- eval = FALSE------------------------------------------------------------
 #  # Train
 #  rf = rand_forest(mtry = 12, trees = 200) %>%
 #    set_engine("ranger", importance = 'impurity') %>%
@@ -163,7 +163,7 @@ library("mlr3pipelines")
 #  # Predict
 #  prds = predict(rf, test_data)
 
-## ---- eval = FALSE-------------------------------------------------------
+## ---- eval = FALSE------------------------------------------------------------
 #  library("data.table")
 #  library("mlr3")
 #  library("mlr3learners")

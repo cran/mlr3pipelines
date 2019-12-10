@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -38,14 +38,15 @@ Depends: R (>= 3.1.0)
 Imports: backports, checkmate, data.table, digest, mlr3 (>= 0.1.4),
         mlr3misc (>= 0.1.4), paradox, R6, withr
 Suggests: ggplot2, glmnet, igraph, knitr, lgr, lme4, mlbench,
-        mlr3filters, mlr3learners, nloptr, rmarkdown, rpart, testthat,
-        visNetwork, bestNormalize, fastICA, kernlab, smotefamily
+        mlr3filters (>= 0.1.1), mlr3learners, mlr3measures, nloptr,
+        rmarkdown, rpart, testthat, visNetwork, bestNormalize, fastICA,
+        kernlab, smotefamily, evaluate
 VignetteBuilder: knitr
 ByteCompile: true
 Encoding: UTF-8
 LazyData: true
 NeedsCompilation: no
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Collate: 'Graph.R' 'GraphLearner.R' 'mlr_pipeops.R' 'utils.R'
         'PipeOp.R' 'PipeOpEnsemble.R' 'LearnerAvg.R' 'NO_OP.R'
         'PipeOpTaskPreproc.R' 'PipeOpBoxCox.R' 'PipeOpBranch.R'
@@ -67,7 +68,7 @@ Collate: 'Graph.R' 'GraphLearner.R' 'mlr_pipeops.R' 'utils.R'
         'PipeOpYeoJohnson.R' 'Selector.R' 'assert_graph.R'
         'greplicate.R' 'gunion.R' 'operators.R' 'po.R' 'reexports.R'
         'typecheck.R' 'zzz.R'
-Packaged: 2019-10-28 19:07:19 UTC; user
+Packaged: 2019-12-10 15:19:43 UTC; user
 Author: Martin Binder [aut, cre],
   Florian Pfisterer [aut] (<https://orcid.org/0000-0001-8867-762X>),
   Bernd Bischl [aut] (<https://orcid.org/0000-0001-6002-6980>),
@@ -75,4 +76,4 @@ Author: Martin Binder [aut, cre],
   Susanne Dandl [aut]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2019-10-29 07:00:02 UTC
+Date/Publication: 2019-12-10 18:00:02 UTC

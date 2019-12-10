@@ -1,5 +1,3 @@
-
-
 # expect that 'one' is a deep clone of 'two'
 expect_deep_clone = function(one, two) {
   # is equal
@@ -195,7 +193,6 @@ expect_datapreproc_pipeop_class = function(poclass, constargs = list(), task,
   expect_false(po$is_trained)
 
   trained = po$train(list(task))
-
   trained2 = po$train(list(task))
   trained3 = po2$train(list(task))
   expect_list(trained, types = "Task", any.missing = FALSE, len = 1)
