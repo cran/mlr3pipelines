@@ -1,3 +1,7 @@
+# mlr3pipelines 0.1.3
+
+* small test fix for R 4.0
+
 # mlr3pipelines 0.1.2
 
 * Work with new mlr3 version 0.1.5 (handling of character columns changed)
