@@ -2,16 +2,14 @@
 # mlr3pipelines <img src="man/figures/logo.png" align="right" />
 
 Package website: [release](https://mlr3pipelines.mlr-org.com/) |
-[dev](https://mlr3pipelines.mlr-org.com/dev)
+[dev](https://mlr3pipelines.mlr-org.com/dev/)
 
 Dataflow Programming for Machine Learning in R.
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/mlr-org/mlr3pipelines.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3pipelines)
+[![tic](https://github.com/mlr-org/mlr3pipelines/workflows/tic/badge.svg?branch=master)](https://github.com/mlr-org/mlr3pipelines/actions)
 [![CRAN](https://www.r-pkg.org/badges/version/mlr3pipelines)](https://cran.r-project.org/package=mlr3pipelines)
-[![Coverage](https://codecov.io/github/mlr-org/mlr3pipelines/branch/master/graphs/badge.svg)](https://codecov.io/github/mlr-org/mlr3pipelines)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 <!-- badges: end -->
 
@@ -87,7 +85,7 @@ shipped with the package, which can also be viewed online:
   - [Quick Introduction](https://mlr3book.mlr-org.com/pipelines.html),
     with short examples to get started
   - [Detailed
-    Introduction](https://mlr-org.github.io/mlr3pipelines/articles/introduction.html),
+    Introduction](https://mlr3pipelines.mlr-org.com/articles/introduction.html),
     diving into concepts and describing the objects involved
   - [Comparison](https://mlr3pipelines.mlr-org.com/articles/comparison_mlr3pipelines_mlr_sklearn.html)
     of `mlr3pipelines` with other packages (not yet authoritative)
@@ -115,5 +113,5 @@ A predecessor to this package is the
 *mlr* 2.x. Other packages that provide, to varying degree, some
 preprocessing functionality or machine learning domain specific
 language, are the *[caret](https://github.com/topepo/caret)* package and
-the related *[recipes](https://tidymodels.github.io/recipes/)* project,
+the related *[recipes](https://recipes.tidymodels.org/)* project,
 and the *[dplyr](https://github.com/tidyverse/dplyr)* package.

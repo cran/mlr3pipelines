@@ -2,9 +2,9 @@ context("Dictionary")
 
 # we check that all pipeops that are exported are also in the dictionary, and can be constructed from there.
 test_that("Dictionary contains all PipeOps", {
-
+  skip_on_cran()
   # abstract pipeops that don't need to be in mlr_pipeops
-  abstracts = c("PipeOp", "PipeOpEnsemble", "PipeOpTaskPreproc", "PipeOpTaskPreprocSimple", "PipeOpImpute")
+  abstracts = c("PipeOp", "PipeOpEnsemble", "PipeOpTaskPreproc", "PipeOpTaskPreprocSimple", "PipeOpImpute", "PipeOpTargetTrafo")
 
   # constructor-args that have no defaults
   initargs = list(
@@ -12,12 +12,14 @@ test_that("Dictionary contains all PipeOps", {
     PipeOpChunk = list(outnum = 2),
     PipeOpCopy = list(outnum = 2),
     PipeOpFeatureUnion = list(innum = 2),
+    PipeOpImputeLearner = list(learner = mlr_learners$get("classif.rpart")),
     PipeOpLearner = list(learner = mlr_learners$get("classif.rpart")),
     PipeOpLearnerCV = list(learner = mlr_learners$get("classif.rpart")),
     PipeOpClassifAvg = list(innum = 2),
     PipeOpRegrAvg = list(innum = 2),
     PipeOpUnbranch = list(options = 2),
-    PipeOpFilter = list(filter = mlr3filters::FilterVariance$new(), param_vals = list(filter.nfeat = 1)))
+    PipeOpFilter = list(filter = mlr3filters::FilterVariance$new(), param_vals = list(filter.nfeat = 1)),
+    PipeOpMultiplicityExply = list(outnum = 2))
 
   # The PipeOps that may have a default ID different from the mlr_pipeops key
   unequal_id = c("PipeOpLearner", "PipeOpLearnerCV", "PipeOpFilter")
@@ -79,14 +81,14 @@ test_that("Dictionary contains all PipeOps", {
     }
 
     # check that mlr_pipeops$get() gives the same object as PipeOpXXX$new() does
-    expect_equal(do.call(mlr_pipeops$get, c(list(dictname), args)), test_obj)
+    expect_equal(do.call(mlr_pipeops$get, c(list(dictname), args)), test_obj, info = dictname)
 
     # check that ID can be changed
     args$id = "TESTID"
     expect_false(isTRUE(all.equal(do.call(mlr_pipeops$get, c(list(dictname), args)), test_obj)), dictname)
     test_obj$id = "TESTID"
-    expect_equal(do.call(mlr_pipeops$get, c(list(dictname), args)), test_obj)
-    expect_equal(do.call(pogen$new, args), test_obj)
+    expect_equal(do.call(mlr_pipeops$get, c(list(dictname), args)), test_obj, info = dictname)
+    expect_equal(do.call(pogen$new, args), test_obj, info = dictname)
 
     # we now check if hyperparameters can be changed through construction
     # we do this by automatically generating a hyperparameter value that deviates from the automatically constructed one.
@@ -130,7 +132,8 @@ test_that("data.table of pipeops looks as it should", {
   potable = as.data.table(mlr_pipeops)
 
   expect_set_equal(colnames(potable),
-    c("key", "packages", "input.num", "output.num",
+    c("key", "packages", "tags", "feature_types",
+      "input.num", "output.num",
       "input.type.train", "input.type.predict",
       "output.type.train", "output.type.predict"))
 
@@ -161,4 +164,12 @@ test_that("GraphLearner is in mlr_learners", {
   # FIXME: depends on mlr-org/mlr3#328
   # expect_error(mlr_learners$get("graph"), "'graph'.*'graph'")  # Needs the argument 'graph' to construct 'graph'
 
+})
+
+
+test_that("mlr_graphs dictionary", {
+  expect_r6(mlr_graphs)
+  dt = as.data.table(mlr_graphs)
+  expect_data_table(dt, col.names = "unique")
+  expect_true("key" %in% colnames(dt))
 })

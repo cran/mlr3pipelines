@@ -222,3 +222,23 @@ selector_setdiff = function(selector_x, selector_y) {
     setdiff(selector_x(task), selector_y(task))
   }, "selector_setdiff(%s, %s)", selector_repr(selector_x), selector_repr(selector_y))
 }
+
+#' @describeIn Selector `selector_missing` selects features with missing values.
+#' @export
+selector_missing = function() make_selector(function(task) {
+  missings = task$missings()
+  names(missings)[missings != 0]
+}, "selector_missing()")
+
+#' @describeIn Selector `selector_cardinality_greater_than` selects categorical features with cardinality
+#' greater then a given threshold.
+#' @param min_cardinality (`integer`) \cr
+#'   Minimum number of levels required to be selected.
+#' @export
+selector_cardinality_greater_than = function(min_cardinality) {
+  assert_int(min_cardinality)
+  make_selector(function(task) {
+    levlens = map_int(task$clone(deep = TRUE)$droplevels()$levels(), length)
+    names(levlens[levlens > min_cardinality])
+  }, "selector_cardinality_greater_than(%s)", min_cardinality)
+}

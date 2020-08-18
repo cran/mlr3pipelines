@@ -55,11 +55,11 @@ test_that("complex graph", {
   expect_graph(PipeOpDebugBasic$new() %>>% PipeOpDebugMulti$new(1, 2) %>>% PipeOpDebugMulti$new(2, 1, "debug2"))
 
   expect_graph(PipeOpDebugBasic$new() %>>% PipeOpDebugMulti$new(1, 2) %>>%
-    greplicate(PipeOpDebugMulti$new(1, 2, "debug2"), 2))
+    pipeline_greplicate(PipeOpDebugMulti$new(1, 2, "debug2"), 2))
 
   biggraph = PipeOpDebugBasic$new() %>>%
     PipeOpDebugMulti$new(1, 2) %>>%
-    greplicate(PipeOpDebugMulti$new(1, 2, "debug2"), 2) %>>%
+    pipeline_greplicate(PipeOpDebugMulti$new(1, 2, "debug2"), 2) %>>%
     gunion(list(PipeOpDebugBasic$new("basictop"),
       PipeOpDebugMulti$new(2, 1, "debug2"),
       PipeOpDebugBasic$new("basicbottom"))) %>>%
@@ -252,12 +252,13 @@ test_that("Empty Graph", {
 
   expect_equal(gunion(list(Graph$new(), Graph$new())), Graph$new())
 
-  expect_equal(greplicate(Graph$new(), 100), Graph$new())
+  expect_equal(pipeline_greplicate(Graph$new(), 100), Graph$new())
 
   expect_error(Graph$new()$add_edge("a", "b"), "Cannot add edge to empty Graph")
 
   expect_equal(Graph$new()$state, list())
 
+  expect_equal(Graph$new()$update_ids()$ids(), character(0))
 })
 
 test_that("Graph printer aux function calculates col widths well", {
@@ -349,4 +350,31 @@ test_that("Graph State", {
 
   expect_equal(g$predict(task), g_clone$predict(task))
 
+})
+
+test_that("Graph with vararg input", {
+  t1 = tsk("iris")
+  t2 = PipeOpPCA$new()$train(list(t1))[[1]]
+  tcombined = PipeOpFeatureUnion$new()$train(list(t1, t2))[[1]]
+  gr = as_graph(PipeOpFeatureUnion$new())
+  expect_equal(tcombined, gr$train(list(t1, t2), single_input = FALSE)[[1]])
+  expect_equal(tcombined, gr$predict(list(t1, t2), single_input = FALSE)[[1]])
+
+  gr = gunion(list(PipeOpNOP$new(), gr, PipeOpNOP$new(id = "nop2"), PipeOpNOP$new(id = "nop3")))
+
+  expect_equal(list(nop.output = 1, featureunion.output = tcombined, nop2.output = 2, nop3.output = 3),
+               gr$train(list(1, t1, t2, 2, 3), single_input = FALSE))
+})
+
+test_that("single pipeop plot", {
+  imp_num = po("imputehist")
+  graph = as_graph(imp_num)
+
+  pdf(file = NULL)
+  graph$plot()
+  dev.off()
+
+  p = graph$plot(TRUE)
+  expect_class(p, "htmlwidget")
+  expect_class(p, "visNetwork")
 })
