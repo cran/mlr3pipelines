@@ -10,16 +10,16 @@ Dataflow Programming for Machine Learning in R.
 
 [![tic](https://github.com/mlr-org/mlr3pipelines/workflows/tic/badge.svg?branch=master)](https://github.com/mlr-org/mlr3pipelines/actions)
 [![CRAN](https://www.r-pkg.org/badges/version/mlr3pipelines)](https://cran.r-project.org/package=mlr3pipelines)
+[![Coverage](https://codecov.io/github/mlr-org/mlr3pipelines/branch/master/graphs/badge.svg)](https://codecov.io/github/mlr-org/mlr3pipelines)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 <!-- badges: end -->
 
 ## What is `mlr3pipelines`?
 
-Watch our UseR 2019 Presentation on Youtube for a 15 minute
-introduction:
+Watch our "WhyR 2020" Webinar Presentation on Youtube for an introduction! Find the slides [here](https://github.com/mlr-org/mlr-outreach/raw/master/2020_whyr/slides.pdf).
 
-[![UseR 2019
-mlr3pipelines](https://img.youtube.com/vi/gEW5RxkbQuQ/0.jpg)](https://www.youtube.com/watch?v=gEW5RxkbQuQ)
+[![WhyR 2020
+mlr3pipelines](https://img.youtube.com/vi/4r8K3GO5wk4/0.jpg)](https://www.youtube.com/watch?v=4r8K3GO5wk4)
 
 **`mlr3pipelines`** is a [dataflow
 programming](https://en.wikipedia.org/wiki/Dataflow_programming) toolkit
@@ -84,11 +84,6 @@ shipped with the package, which can also be viewed online:
 
   - [Quick Introduction](https://mlr3book.mlr-org.com/pipelines.html),
     with short examples to get started
-  - [Detailed
-    Introduction](https://mlr3pipelines.mlr-org.com/articles/introduction.html),
-    diving into concepts and describing the objects involved
-  - [Comparison](https://mlr3pipelines.mlr-org.com/articles/comparison_mlr3pipelines_mlr_sklearn.html)
-    of `mlr3pipelines` with other packages (not yet authoritative)
 
 ## Bugs, Questions, Feedback
 

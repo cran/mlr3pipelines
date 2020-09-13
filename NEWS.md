@@ -1,3 +1,21 @@
+# mlr3pipelines 0.2.1-9000
+
+* compatibility with mlr3 0.6
+* NULL input channels accept any kind of input
+* print() method of Graphs now also allows for printing a DOT representation on the console
+* state of PipeOps now reset to NULL if training fails
+* implemented as_learner.PipeOp
+* LearnerClassifAvg, LearnerRegrAvg use bbotk now
+* Changed PPLs:
+  - fix how ppl_robustify detects whether a learner can handle factors
+* Changed PipeOps:
+  - PipeOpTextVectorizer can now return an "integer sequence representation".
+* New PipeOps:
+  - PipeOpNMF
+  - PipeOpColRoles
+  - PipeOpVtreat
+* various bugfixes
+
 # mlr3pipelines 0.2.1
 
 * New feature: Multiplicities: implicit repetition of operations
@@ -54,6 +72,9 @@
 * small test fix for R 4.0 (necessary for stringsAsFactors option default change in 3.6 -> 4.0)
 * predict() generic for Graph
 * Migrated last vignette to "mlr3 Book"
+
+* Compact in-memory representation of R6 objects to save space when
+  saving objects via saveRDS(), serialize() etc.
 
 # mlr3pipelines 0.1.2
 
