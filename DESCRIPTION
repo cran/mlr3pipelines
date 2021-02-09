@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.3.2
+Version: 0.3.3
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -41,9 +41,9 @@ URL: https://mlr3pipelines.mlr-org.com,
 BugReports: https://github.com/mlr-org/mlr3pipelines/issues
 Depends: R (>= 3.1.0)
 Imports: backports, checkmate, data.table, digest, lgr, mlr3 (>=
-        0.6.0), mlr3misc (>= 0.5.0), paradox, R6, withr
+        0.6.0), mlr3misc (>= 0.7.0), paradox, R6, withr
 Suggests: ggplot2, glmnet, igraph, knitr, lme4, mlbench, bbotk (>=
-        0.2.0), mlr3filters (>= 0.1.1), mlr3learners, mlr3measures,
+        0.3.0), mlr3filters (>= 0.1.1), mlr3learners, mlr3measures,
         nloptr, quanteda, rmarkdown, rpart, stopwords, testthat,
         visNetwork, bestNormalize, fastICA, kernlab, smotefamily,
         evaluate, NMF, MASS, kknn, GenSA, methods, vtreat
@@ -82,7 +82,7 @@ Collate: 'Graph.R' 'GraphLearner.R' 'mlr_pipeops.R' 'multiplicity.R'
         'bibentries.R' 'greplicate.R' 'gunion.R' 'mlr_graphs.R'
         'mlr_graphs_elements.R' 'operators.R' 'pipe.R' 'po.R'
         'reexports.R' 'typecheck.R' 'zzz.R'
-Packaged: 2020-12-07 20:40:19 UTC; user
+Packaged: 2021-02-08 21:46:46 UTC; user
 Author: Martin Binder [aut, cre],
   Florian Pfisterer [aut] (<https://orcid.org/0000-0001-8867-762X>),
   Lennart Schneider [aut] (<https://orcid.org/0000-0003-4152-5308>),
@@ -91,4 +91,4 @@ Author: Martin Binder [aut, cre],
   Susanne Dandl [aut]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2020-12-17 23:40:02 UTC
+Date/Publication: 2021-02-09 06:10:07 UTC

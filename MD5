@@ -1,9 +1,9 @@
-d53063941948e74e5a7ebe3343a78d1f *DESCRIPTION
+4885badcb3861f7835111c4080b325f2 *DESCRIPTION
 90bd813946377b9f591e29a0bb32e97c *NAMESPACE
-eb1a01434fe6a4f63399802b2a651f15 *NEWS.md
+97d5b0b1dc2e2b349d50b300c482077f *NEWS.md
 a7f5e1e519579cf5bc3e3760ced57bba *R/Graph.R
 db3cc9e88097bb4ff81574fc4f10f43d *R/GraphLearner.R
-8f5ed9e260cdc30a1a18fb2ae347422e *R/LearnerAvg.R
+c836ac161dfe8dfdeef77b5986e3224c *R/LearnerAvg.R
 2dd07ed9665d06fd5de7d716cf807b9a *R/NO_OP.R
 2d55c5436ed8209c4048b0b068ebb163 *R/PipeOp.R
 b87f21c598c3a3e01c9709da4864ea5a *R/PipeOpBoxCox.R
@@ -64,13 +64,13 @@ cba6fda4c23a3a71ac214d39230fbd3a *R/PipeOpTaskPreproc.R
 a1556b8810e810cdf8818cd4cb5ebde1 *R/PipeOpTextVectorizer.R
 06eaba25b0e2751785b3571b486dba91 *R/PipeOpThreshold.R
 782dd3beff5215d8bcbb4041ee8020df *R/PipeOpTrafo.R
-6537811cf9a782e4c9604be2c8f2c72e *R/PipeOpTuneThreshold.R
+8a8cc0249e5e13ce16c544a6816a7707 *R/PipeOpTuneThreshold.R
 c978fd64488b747b42991eb5f05532c2 *R/PipeOpUnbranch.R
 1a5a8ae619686fb29a496e529b30b7a6 *R/PipeOpVtreat.R
 142075207a30ec9fb86d512c8a1b4697 *R/PipeOpYeoJohnson.R
 960d4230cc8a445a47403776926fd6c5 *R/Selector.R
 268fc1ecabc9d759efa821a727c3a234 *R/assert_graph.R
-bde1a307ab2967443703cc141e07db8e *R/bibentries.R
+5584a17f6ae0722ddce81d7e82950f2c *R/bibentries.R
 173875bf1eddbdf169b9c79f5792c102 *R/greplicate.R
 cd20e5209ebe3ada70cc9dc6ad0ecc28 *R/gunion.R
 6529bccde1b44285b476514f54abc118 *R/mlr_graphs.R
@@ -85,9 +85,7 @@ ad29b4e8fda294271dc99066e3b8379b *R/pipe.R
 c4274db0b7e3992f98ae8dd91c3f8085 *R/utils.R
 0ba7d03e9e1b364eb36299c87f731615 *R/zzz.R
 afcc2d3754a1735ac9554ba2cea9ec9d *README.md
-bc3beec2f624dcd0177a89da07571e2c *build/partial.rdb
-3df24fb54492070d863bc55450035e29 *inst/doc/comparison_mlr3pipelines_mlr_sklearn.html
-3553f3e658ace72ecf8640c99917412c *inst/doc/introduction.html
+c19ed512ededba3aa2e08972da611b25 *build/partial.rdb
 3da3f4e77b564583a9bfc84f867c18fa *man/Graph.Rd
 f13fe06605d180040d696dbb747a50f8 *man/Multiplicity.Rd
 b93023999ece6ac5ef514ac015e7c756 *man/NO_OP.Rd
@@ -117,7 +115,7 @@ c4dcc8d06925ead12ecde241a214edf3 *man/mlr_graphs.Rd
 0faf0562de957d48823c03182e37dc90 *man/mlr_graphs_branching.Rd
 46bc6daa79ffd97124de52900e004241 *man/mlr_graphs_robustify.Rd
 74c4c0670489ec17c55a6a44ab41da23 *man/mlr_graphs_targettrafo.Rd
-70f8d73c95516858dde467eb61f75ca9 *man/mlr_learners_avg.Rd
+2f48dc8e5155aae6208caedbaa4082a8 *man/mlr_learners_avg.Rd
 6dc9fd58c432ba646123aa491bce41bf *man/mlr_learners_graph.Rd
 18ff2631e2d39a4de68f0637f9105600 *man/mlr_pipeops.Rd
 e6d24f434645b37b5f4f3e0b95f1396b *man/mlr_pipeops_boxcox.Rd
@@ -268,7 +266,7 @@ adfe7c82e499a417255424d548ec2ab4 *tests/testthat/test_pipeop_subsample.R
 6e3f18c4de75fb690b602f493a5352ab *tests/testthat/test_pipeop_targettrafo.R
 7da1b3321a559ae8c789a2a82a3702e3 *tests/testthat/test_pipeop_targettrafoscalerange.R
 fa665aa3fcf863343fe62b04d70bdc11 *tests/testthat/test_pipeop_task_preproc.R
-c38a4267332d13fe9ef1122515e8346a *tests/testthat/test_pipeop_textvectorizer.R
+3ebbe587d554989f7792e6a277e469af *tests/testthat/test_pipeop_textvectorizer.R
 684b183d93e53d66e86b08296d3fa8f5 *tests/testthat/test_pipeop_threshold.R
 e8ca922f0eed94a5d9e85fe146e07313 *tests/testthat/test_pipeop_tunethreshold.R
 81c273e1adf7294a6c88aaccc3c2ce78 *tests/testthat/test_pipeop_unbranch.R
