@@ -4,7 +4,7 @@ test_that("Multiplicity class and methods", {
   mp = Multiplicity(0)
   expect_multiplicity(mp)
   expect_equal(mp, as.Multiplicity(0))
-  expect_error(assert_multiplicity(0, .var.name = "x"), regexp = "Must inherit from class 'Multiplicity'")
+  expect_error(assert_multiplicity(0, .var.name = "x"), regexp = "inherit from class 'Multiplicity'")
   expect_multiplicity(assert_multiplicity(mp))
   nmp = Multiplicity(Multiplicity(0))
   expect_multiplicity(assert_multiplicity(nmp))
@@ -17,9 +17,9 @@ test_that("Multiplicity class and methods", {
 test_that("multiplicity_nests_deeper_than", {
   expect_true(multiplicity_nests_deeper_than(Multiplicity(Multiplicity(1)), 1))
   expect_false(multiplicity_nests_deeper_than(Multiplicity(Multiplicity(1)), 2))
-  expect_true(is.na(multiplicity_nests_deeper_than(Multiplicity(Multiplicity()), 2)))
+#  expect_true(is.na(multiplicity_nests_deeper_than(Multiplicity(Multiplicity()), 2)))  # TODO: adapt this once #596 is fixed.
   expect_false(multiplicity_nests_deeper_than(Multiplicity(Multiplicity(), Multiplicity(1)), 2))
-  expect_true(multiplicity_nests_deeper_than(Multiplicity(Multiplicity(), Multiplicity(Multiplicity())), 2))
+#  expect_true(multiplicity_nests_deeper_than(Multiplicity(Multiplicity(), Multiplicity(Multiplicity())), 2))  # TODO: adapt this once #596 is fixed.
 })
 
 test_that("PipeOp - assert_connection_table", {

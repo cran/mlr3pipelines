@@ -1,3 +1,10 @@
+# mlr3pipelines 0.3.6
+
+* Bugfix: Make empty Multiplicities work (unless they are nested)
+* Fixed: Compatibility with upcoming bbotk version.
+* New mlr_graphs: pipeline_stacking
+* Added JMLR-Citation
+
 # mlr3pipelines 0.3.5-1
 
 * Fixed: Compatibility with upcoming mlr3 version.
