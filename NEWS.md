@@ -1,3 +1,7 @@
+# mlr3pipelines 0.3.6-1
+
+* Fix numerics problem in tests
+
 # mlr3pipelines 0.3.6
 
 * Bugfix: Make empty Multiplicities work (unless they are nested)

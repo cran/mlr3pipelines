@@ -1,6 +1,6 @@
-cb22c9628f9c383cb480650c530bba44 *DESCRIPTION
+dd5f0b6c04c37f2eb15401c84cb8b032 *DESCRIPTION
 798e2f8a1c22245401510e107116399f *NAMESPACE
-67a335292527ddf74820890e303f47fa *NEWS.md
+aa81ff5e92d1275b202cfd6200d1722e *NEWS.md
 2c1156df524a3ca502da63db549b10af *R/Graph.R
 8a26b372dc2fe9850e008fc37c99ece2 *R/GraphLearner.R
 083b410e91ee96a07dfb01e4b1d38458 *R/LearnerAvg.R
@@ -84,8 +84,8 @@ ad29b4e8fda294271dc99066e3b8379b *R/pipe.R
 54bc552967d3ea0d650eac869fe4cfe8 *R/typecheck.R
 c4274db0b7e3992f98ae8dd91c3f8085 *R/utils.R
 d9654abb75d6f9b1f950e995b2ed2e08 *R/zzz.R
-37aef99405f90ae143c43e7759eed590 *README.md
-f6d3030076a7bb3f09a64ef3e271a335 *build/partial.rdb
+b033d64c430677ed51803d249571bd51 *README.md
+8aeb1237244816bfdf9e725f958d9001 *build/partial.rdb
 930804dfb5ab538773d949d79e0f52e5 *inst/CITATION
 3df24fb54492070d863bc55450035e29 *inst/doc/comparison_mlr3pipelines_mlr_sklearn.html
 3553f3e658ace72ecf8640c99917412c *inst/doc/introduction.html
@@ -241,7 +241,7 @@ b51958c5fb4770586b6205307811ed19 *tests/testthat/test_pipeop_histbin.R
 2f38de79518e4e76983f21a4732f1f72 *tests/testthat/test_pipeop_ica.R
 4d28c955f689596df806455836cad3ba *tests/testthat/test_pipeop_impute.R
 48161b8211b41ff598d365a7104526a9 *tests/testthat/test_pipeop_imputelearner.R
-99151671b1b1caba7bfb0d2a27d0c083 *tests/testthat/test_pipeop_kernelpca.R
+312481389710dc6a1204ae67b7ebb71b *tests/testthat/test_pipeop_kernelpca.R
 816fa6e3976d471b67facda50d8aac44 *tests/testthat/test_pipeop_learner.R
 a34e6512d9fd4e8fe2277de552feebd3 *tests/testthat/test_pipeop_learnercv.R
 c29f8027f61b78abefcba23358761ae0 *tests/testthat/test_pipeop_missind.R
