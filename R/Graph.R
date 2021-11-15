@@ -70,6 +70,8 @@
 #'   will not be connected within the [`Graph`] at first.\cr
 #'   Instead of supplying a [`PipeOp`] directly, an object that can naturally be converted to a [`PipeOp`] can also
 #'   be supplied, e.g. a [`Learner`][mlr3::Learner] or a [`Filter`][mlr3filters::Filter]; see [`as_pipeop()`].
+#'   The argument given as `op` is always cloned; to access a `Graph`'s [`PipeOp`]s by-reference, use `$pipeops`.\cr
+#'   Note that `$add_pipeop()` is a relatively low-level operation, it is recommended to build graphs using [`%>>%`].
 #' * `add_edge(src_id, dst_id, src_channel = NULL, dst_channel = NULL)` \cr
 #'   (`character(1)`, `character(1)`,
 #'   `character(1)` | `numeric(1)` | `NULL`,
@@ -79,6 +81,11 @@
 #'   channel `dst_channel` (identified by its name or number as listed in the [`PipeOp`]'s `$input`).
 #'   If source or destination [`PipeOp`] have only one input / output channel and `src_channel` / `dst_channel`
 #'   are therefore unambiguous, they can be omitted (i.e. left as `NULL`).
+#' * `chain(gs, clone = TRUE)` \cr
+#'   (`list` of `Graph`s, `logical(1)`) -> `self` \cr
+#'   Takes a list of `Graph`s or [`PipeOp`]s (or objects that can be automatically converted into `Graph`s or [`PipeOp`]s,
+#'   see [`as_graph()`] and [`as_pipeop()`]) as inputs and joins them in a serial `Graph` coming after `self`, as if
+#'   connecting them using [`%>>%`].
 #' * `plot(html)` \cr
 #'   (`logical(1)`) -> `NULL` \cr
 #'   Plot the [`Graph`], using either the \pkg{igraph} package (for `html = FALSE`, default) or
@@ -165,7 +172,7 @@ Graph = R6Class("Graph",
     },
 
     add_pipeop = function(op) {
-      op = as_pipeop(op)
+      op = as_pipeop(op, clone = TRUE)
       if (op$id %in% names(self$pipeops)) {
         stopf("PipeOp with id '%s' already in Graph", op$id)
       }
@@ -244,6 +251,11 @@ Graph = R6Class("Graph",
       self$ids(sorted = TRUE)  # if we fail here, edges get reset.
       on.exit()
       invisible(self)
+    },
+
+    chain = function(gs, clone = TRUE) {
+      assert_list(gs)
+      chain_graphs(c(list(self), gs), in_place = TRUE)
     },
 
     plot = function(html = FALSE) {
@@ -483,7 +495,7 @@ graph_channels = function(ids, channels, pipeops, direction) {
     return(data.table(name = character(), train = character(),
       predict = character(), op.id = character(), channel.name = character()))
   }
-  map_dtr(pipeops, function(po) {
+  ret = map_dtr(pipeops, function(po) {
 
     # Note: This uses data.frame and is 20% faster than the fastest data.table I could come up with
     # (and factor 2 faster than a naive data.table implementation below).
@@ -492,10 +504,7 @@ graph_channels = function(ids, channels, pipeops, direction) {
     df = as.data.frame(po[[direction]], stringsAsFactors = FALSE)
     rows = df$name %nin% channels[ids == po$id]
     if (!any(rows)) {
-      return(data.frame(name = character(),
-        train = character(), predict = character(),
-        op.id = character(), channel.name = character(),
-        stringsAsFactors = FALSE))
+      return(NULL)
     }
     df$op.id = po$id
     df = df[rows,
@@ -504,6 +513,12 @@ graph_channels = function(ids, channels, pipeops, direction) {
     names(df)[5] = "channel.name"
     df
   })
+
+  if (!nrow(ret)) {
+    return(data.table(name = character(), train = character(), predict = character(),
+      op.id = character(), channel.name = character()))
+  }
+  ret
 }
 
 graph_channels_dt = function(ids, channels, pipeops, direction) {
@@ -540,7 +555,7 @@ graph_reduce = function(self, input, fun, single_input) {
   # create virtual "__initial__" and "__terminal__" nodes with edges to inputs / outputs of graph.
   # if we have `single_input == FALSE` and one(!) vararg channel, we widen the vararg input
   # appropriately.
-  if (!single_input && length(assert_list(input)) > nrow(graph_input) && "..." %in% graph_input$channel.name) {
+  if (!single_input && length(assert_list(input, .var.name = "input when single_input is FALSE")) > nrow(graph_input) && "..." %in% graph_input$channel.name) {
     if (sum("..." == graph_input$channel.name) != 1) {
       stop("Ambiguous distribution of inputs to vararg channels.\nAssigning more than one input to vararg channels when there are multiple vararg inputs does not work.")
     }
@@ -561,7 +576,7 @@ graph_reduce = function(self, input, fun, single_input) {
   if (!single_input) {
     # we need the input list length to be equal to the number of channels. This number was
     # already increased appropriately if there is a single vararg channel.
-    assert_list(input, len = nrow(graph_input))
+    assert_list(input, len = nrow(graph_input), .var.name = sprintf("input when single_input is FALSE and there are %s input channels", nrow(graph_input)))
     # input can be a named list (will be distributed to respective edges) or unnamed.
     # if it is named, we check that names are unambiguous.
     if (!is.null(names(input))) {
@@ -569,7 +584,7 @@ graph_reduce = function(self, input, fun, single_input) {
         # FIXME this will unfortunately trigger if there is more than one named input for a vararg channel.
         stopf("'input' must not be a named list because Graph %s input channels have duplicated names.", self$id)
       }
-      assert_names(names(input), subset.of = graph_input$name)
+      assert_names(names(input), subset.of = graph_input$name, .var.name = sprintf("input when it has names and single_input is FALSE"))
       edges[list("__initial__", names(input)), "payload" := list(input), on = c("src_id", "src_channel")]
     } else {
       # don't rely on unique graph_input$name!

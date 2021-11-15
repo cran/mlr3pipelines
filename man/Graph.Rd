@@ -82,6 +82,8 @@ Mutates \code{\link{Graph}} by adding a \code{\link{PipeOp}} to the \code{\link{
 will not be connected within the \code{\link{Graph}} at first.\cr
 Instead of supplying a \code{\link{PipeOp}} directly, an object that can naturally be converted to a \code{\link{PipeOp}} can also
 be supplied, e.g. a \code{\link[mlr3:Learner]{Learner}} or a \code{\link[mlr3filters:Filter]{Filter}}; see \code{\link[=as_pipeop]{as_pipeop()}}.
+The argument given as \code{op} is always cloned; to access a \code{Graph}'s \code{\link{PipeOp}}s by-reference, use \verb{$pipeops}.\cr
+Note that \verb{$add_pipeop()} is a relatively low-level operation, it is recommended to build graphs using \code{\link{\%>>\%}}.
 \item \code{add_edge(src_id, dst_id, src_channel = NULL, dst_channel = NULL)} \cr
 (\code{character(1)}, \code{character(1)},
 \code{character(1)} | \code{numeric(1)} | \code{NULL},
@@ -91,6 +93,11 @@ Add an edge from \code{\link{PipeOp}} \code{src_id}, and its channel \code{src_c
 channel \code{dst_channel} (identified by its name or number as listed in the \code{\link{PipeOp}}'s \verb{$input}).
 If source or destination \code{\link{PipeOp}} have only one input / output channel and \code{src_channel} / \code{dst_channel}
 are therefore unambiguous, they can be omitted (i.e. left as \code{NULL}).
+\item \code{chain(gs, clone = TRUE)} \cr
+(\code{list} of \code{Graph}s, \code{logical(1)}) -> \code{self} \cr
+Takes a list of \code{Graph}s or \code{\link{PipeOp}}s (or objects that can be automatically converted into \code{Graph}s or \code{\link{PipeOp}}s,
+see \code{\link[=as_graph]{as_graph()}} and \code{\link[=as_pipeop]{as_pipeop()}}) as inputs and joins them in a serial \code{Graph} coming after \code{self}, as if
+connecting them using \code{\link{\%>>\%}}.
 \item \code{plot(html)} \cr
 (\code{logical(1)}) -> \code{NULL} \cr
 Plot the \code{\link{Graph}}, using either the \pkg{igraph} package (for \code{html = FALSE}, default) or
