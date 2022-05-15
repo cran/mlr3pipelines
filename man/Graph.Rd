@@ -18,8 +18,10 @@ perform preprocessing of data, and, in principle, does not even need to handle d
 dependency structure (although the \code{\link{PipeOp}}s for this would need to be written).
 }
 \section{Construction}{
-\preformatted{Graph$new()
-}
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{Graph$new()
+}\if{html}{\out{</div>}}
 }
 
 \section{Internals}{
@@ -66,6 +68,8 @@ Stores a checksum calculated on the \code{\link{Graph}} configuration, which inc
 (and therefore their \verb{$param_set$values}) and a hash of \verb{$edges}.
 \item \code{keep_results} :: \code{logical(1)} \cr
 Whether to store intermediate results in the \code{\link{PipeOp}}'s \verb{$.result} slot, mostly for debugging purposes. Default \code{FALSE}.
+\item \code{man} :: \code{character(1)}\cr
+Identifying string of the help page that shows with \code{help()}.
 }
 }
 
@@ -135,6 +139,10 @@ in order in which they are listed in \verb{$input}.
 (\code{any}, \code{logical(1)}) -> \code{list} of \code{any} \cr
 Predict with the \code{\link{Graph}} by calling all the \code{\link{PipeOp}}'s \verb{$train} methods. Input and output, as well as the function
 of the \code{single_input} argument, are analogous to \verb{$train()}.
+\item \code{help(help_type)} \cr
+(\code{character(1)}) -> help file\cr
+Displays the help file of the concrete \code{PipeOp} instance. \code{help_type} is one of \code{"text"}, \code{"html"}, \code{"pdf"} and behaves
+as the \code{help_type} argument of R's \code{help()}.
 }
 }
 
