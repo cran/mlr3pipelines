@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.4.1
+Version: 0.4.2
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -83,7 +83,7 @@ Collate: 'Graph.R' 'GraphLearner.R' 'mlr_pipeops.R' 'multiplicity.R'
         'pipeline_greplicate.R' 'pipeline_ovr.R' 'pipeline_robustify.R'
         'pipeline_stacking.R' 'pipeline_targettrafo.R' 'po.R' 'ppl.R'
         'reexports.R' 'typecheck.R' 'zzz.R'
-Packaged: 2022-05-15 17:45:51 UTC; user
+Packaged: 2022-09-20 20:04:47 UTC; user
 Author: Martin Binder [aut, cre],
   Florian Pfisterer [aut] (<https://orcid.org/0000-0001-8867-762X>),
   Lennart Schneider [aut] (<https://orcid.org/0000-0003-4152-5308>),
@@ -92,4 +92,4 @@ Author: Martin Binder [aut, cre],
   Susanne Dandl [aut]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2022-05-15 18:20:02 UTC
+Date/Publication: 2022-09-20 22:00:07 UTC
