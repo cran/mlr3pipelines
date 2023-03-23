@@ -1,3 +1,8 @@
+# mlr3pipelines 0.4.3
+* `po()`, `pos()` can now construct `PipeOp`s with ID postfix `_<number>` to avoid ID clashes.
+* `GraphLearner` now has method `$base_learner()` that returns the underlying `Learner`, if it can be found by a simple heuristic.
+* Fix S3 function signatures
+
 # mlr3pipelines 0.4.2
 
 * Documentation: Clarified `PipeOpHistBin` operation.

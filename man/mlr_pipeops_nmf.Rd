@@ -96,7 +96,7 @@ See \code{\link[NMF:nmf]{nmf()}}.
 
 \section{Internals}{
 
-Uses the \code{\link[NMF:nmf]{nmf()}} function as well as \code{\link[NMF:basis-coef-methods]{basis()}}, \code{\link[NMF:basis-coef-methods]{coef()}} and
+Uses the \code{\link[NMF:nmf]{nmf()}} function as well as \code{\link[NMF:basis]{basis()}}, \code{\link[NMF:coef]{coef()}} and
 \code{\link[MASS:ginv]{ginv()}}.
 }
 
@@ -119,7 +119,7 @@ pop$state
 }
 }
 \seealso{
-https://mlr3book.mlr-org.com/list-pipeops.html
+https://mlr-org.com/pipeops.html
 
 Other PipeOps: 
 \code{\link{PipeOpEnsemble}},
