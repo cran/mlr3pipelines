@@ -56,6 +56,9 @@
 #' * `hash` :: `character(1)` \cr
 #'   Stores a checksum calculated on the [`Graph`] configuration, which includes all [`PipeOp`] hashes
 #'   (and therefore their `$param_set$values`) and a hash of `$edges`.
+#' * `phash` :: `character(1)` \cr
+#'   Stores a checksum calculated on the [`Graph`] configuration, which includes all [`PipeOp`] hashes
+#'   *except* their `$param_set$values`, and a hash of `$edges`.
 #' * `keep_results` :: `logical(1)` \cr
 #'   Whether to store intermediate results in the [`PipeOp`]'s `$.result` slot, mostly for debugging purposes. Default `FALSE`.
 #' * `man` :: `character(1)`\cr
@@ -265,7 +268,7 @@ Graph = R6Class("Graph",
       chain_graphs(c(list(self), gs), in_place = TRUE)
     },
 
-    plot = function(html = FALSE) {
+    plot = function(html = FALSE, horizontal = FALSE, ...) {
       assert_flag(html)
       if (!length(self$pipeops)) {
         cat("Empty Graph, not plotting.\n")
@@ -289,10 +292,7 @@ Graph = R6Class("Graph",
         extra_vertices = setdiff(names(self$pipeops), c(df$from, df$to))
       }
       ig = igraph::add_vertices(ig, length(extra_vertices), name = extra_vertices)
-      layout = igraph::layout_with_sugiyama(ig)$layout
-      if (!is.matrix(layout)) {
-        layout = t(layout)  # bug in igraph, dimension is dropped
-      }
+
       if (html) {
         require_namespaces("visNetwork")
         ig_data = visNetwork::toVisNetworkData(ig)
@@ -334,7 +334,25 @@ Graph = R6Class("Graph",
         }
         p
       } else {
-        suppressWarnings(graphics::plot(ig, layout = layout))  # suppress partial matching warning
+        layout = igraph::layout_with_sugiyama(ig)$layout
+        if (!is.matrix(layout)) {
+          layout = t(layout)  # bug in igraph, dimension is dropped
+        }
+        if (horizontal) {
+          layout = -layout[, 2:1]
+        }
+        layout[, 1] = layout[, 1] * .75
+        layout[, 2] = layout[, 2] * .75
+
+        defaultargs = list(vertex.shape = "crectangle", vertex.size = 60, vertex.size2 = 15 * 2.5, vertex.color = 0,
+          xlim = range(layout[, 1]) + c(-0.3, 0.3),
+          ylim = range(layout[, 2]) + c(-0.1, 0.1),
+          rescale = FALSE,
+          asp = 0.4
+        )
+    #    defaultargs = insert_named(defaultargs, list(...))
+
+        suppressWarnings(invoke(graphics::plot, ig, layout = layout, .args = defaultargs))  # suppress partial matching warning
       }
     },
 
@@ -460,6 +478,11 @@ Graph = R6Class("Graph",
     hash = function() {
       digest(
         list(map(self$pipeops, "hash"), self$edges),
+        algo = "xxhash64")
+    },
+    phash = function() {
+      digest(
+        list(map(self$pipeops, "phash"), self$edges),
         algo = "xxhash64")
     },
     param_set = function(val) {
@@ -622,7 +645,8 @@ graph_reduce = function(self, input, fun, single_input) {
     if (self$keep_results) {
       op$.result = output
     }
-    edges[list(id, op$output$name), "payload" := list(output), on = c("src_id", "src_channel")]
+
+    edges[list(id, op$output$name), "payload" := list(output[get("src_channel")]), on = c("src_id", "src_channel")]
   }
 
   # get payload of edges that go to terminal node.

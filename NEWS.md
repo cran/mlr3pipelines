@@ -1,3 +1,11 @@
+# mlr3pipelines 0.5.0
+
+* New way of computing `$hash` and `$phash` for `GraphLearner` and all `PipeOp`s. This could break users that inherit from `PipeOp` and make use of `$hash` in the future (but is ultimately in their interest!).
+* Neater plots.
+* Bugfix: `phash` of `GraphLearner` now considers content of Graph, not only IDs.
+* One vignette removed for version 0.1.3 added back here. Welcome home!
+* Bugfix: Make Graph work that have PipeOps with more than one output, where one output was linked to multiple inputs.
+
 # mlr3pipelines 0.4.3
 * `po()`, `pos()` can now construct `PipeOp`s with ID postfix `_<number>` to avoid ID clashes.
 * `GraphLearner` now has method `$base_learner()` that returns the underlying `Learner`, if it can be found by a simple heuristic.
