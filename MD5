@@ -1,11 +1,11 @@
-bf35a5712796b4fda7f935ff895111de *DESCRIPTION
+865cf1d0e794e3975f5b2c63c548bb36 *DESCRIPTION
 7b44337c7d18c3c3c63e20eb5a77c9f7 *NAMESPACE
-9d7277f6f9a70a888e74855ae99769a1 *NEWS.md
+0d4135661bb98ff614d477dd87a87265 *NEWS.md
 da783c2afe8779e14a447795bbf1906c *R/Graph.R
 77468b2bf499d111cb18584b3e8cdd34 *R/GraphLearner.R
 aac65988f3f37fe8abd9c5aacf25cde5 *R/LearnerAvg.R
 2dd07ed9665d06fd5de7d716cf807b9a *R/NO_OP.R
-168958c246b9fbd8c29b038c515ffba5 *R/PipeOp.R
+771353e9737ebc5f74b9ec8126263f2b *R/PipeOp.R
 89289fea72c1ff78c2c293a76038c82d *R/PipeOpBoxCox.R
 a206681675ace7d3778809a96b48c145 *R/PipeOpBranch.R
 7fb8fd3dcd88766fd858baebce6ae38e *R/PipeOpChunk.R
@@ -37,7 +37,7 @@ acff436495f0ac5154ac027874531969 *R/PipeOpImputeOOR.R
 5e670dcebc8e8604de8b7e0287931d2b *R/PipeOpImputeSample.R
 7d41578e06e4d9086d1d8db38adf5f2c *R/PipeOpKernelPCA.R
 8e2d671ba84f247b645fe3919321bdea *R/PipeOpLearner.R
-1261c690ce568e3662d8695f03e513d3 *R/PipeOpLearnerCV.R
+65ac8396e11343dfbd034ed50a14c81d *R/PipeOpLearnerCV.R
 25a80077e4f3422b262d5410828a052f *R/PipeOpMissingIndicators.R
 1b9da8f7ffd264f4b4ea3532d58aa1d3 *R/PipeOpModelMatrix.R
 732ab609551bd99afa9bde6c3fc16b04 *R/PipeOpMultiplicity.R
@@ -64,7 +64,7 @@ b4e56c34d744adb143b78f853a82839f *R/PipeOpSubsample.R
 90c6714442d491ebb5cfdd069033866b *R/PipeOpTextVectorizer.R
 0323259a39b90027defc89605bd4b4bb *R/PipeOpThreshold.R
 f50c1123f94818ebc61fe9cd81f05b95 *R/PipeOpTrafo.R
-b5cf0510b65349e02b8a9f5ff0f3a57c *R/PipeOpTuneThreshold.R
+4c6ee3763ecfc97a05acc1f8ea02e740 *R/PipeOpTuneThreshold.R
 c51e171fdff13c7964a0ef5f64685f2f *R/PipeOpUnbranch.R
 465a5c5db6c7ac028ce101fd510f690d *R/PipeOpVtreat.R
 a8e05b87524f9ee784a8758bbb30bdc6 *R/PipeOpYeoJohnson.R
@@ -90,7 +90,7 @@ eebc9c1ef8e394ab43f63bbc7c027010 *R/ppl.R
 88bf803b6e7b94b958db8103cb72b12c *R/typecheck.R
 8d64806ebf67a57447e1315ccd1adefb *R/utils.R
 d9654abb75d6f9b1f950e995b2ed2e08 *R/zzz.R
-b033d64c430677ed51803d249571bd51 *README.md
+28941c7fbc664ca41224e1ff796ca67a *README.md
 7f2094c7b4d5faa522b624cffc621f8b *build/partial.rdb
 c980e32c8aa878073686c88d551185cf *build/vignette.rds
 930804dfb5ab538773d949d79e0f52e5 *inst/CITATION
@@ -254,7 +254,7 @@ d5695cfab3725489b54acaa2dec5a68a *tests/testthat/test_pipeop_impute.R
 48161b8211b41ff598d365a7104526a9 *tests/testthat/test_pipeop_imputelearner.R
 312481389710dc6a1204ae67b7ebb71b *tests/testthat/test_pipeop_kernelpca.R
 861d246cdf9cf1e86a40dc37d48463c3 *tests/testthat/test_pipeop_learner.R
-a34e6512d9fd4e8fe2277de552feebd3 *tests/testthat/test_pipeop_learnercv.R
+822bcbdaf2c87f75fb5d784e671f25c7 *tests/testthat/test_pipeop_learnercv.R
 c29f8027f61b78abefcba23358761ae0 *tests/testthat/test_pipeop_missind.R
 8d2a5a230ce6bd8d098a7f786496ab0a *tests/testthat/test_pipeop_modelmatrix.R
 4597d791070449f936c37ed7ff6cc620 *tests/testthat/test_pipeop_multiplicityexply.R
@@ -284,7 +284,7 @@ b5e615edb7314012a025c5b20e9c5d5c *tests/testthat/test_pipeop_select.R
 fa665aa3fcf863343fe62b04d70bdc11 *tests/testthat/test_pipeop_task_preproc.R
 31490d3bfb2e6a0e7696a8df72ffd2d2 *tests/testthat/test_pipeop_textvectorizer.R
 fc7434611beb828e0e3578ec2597249b *tests/testthat/test_pipeop_threshold.R
-e8ca922f0eed94a5d9e85fe146e07313 *tests/testthat/test_pipeop_tunethreshold.R
+838270602784369f8323bcb88af03ca2 *tests/testthat/test_pipeop_tunethreshold.R
 81c273e1adf7294a6c88aaccc3c2ce78 *tests/testthat/test_pipeop_unbranch.R
 e81fa97251e487620876e29f5072b2c8 *tests/testthat/test_pipeop_updatetarget.R
 75cdc7cf0bf3d9804dec0c50f68694fb *tests/testthat/test_pipeop_vtreat.R

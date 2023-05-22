@@ -1,3 +1,7 @@
+# mlr3pipelines 0.5.0-1
+
+* Bugfix: `PipeOpTuneThreshold` was not overloading the correct `.train` and `.predict` functions.
+
 # mlr3pipelines 0.5.0
 
 * New way of computing `$hash` and `$phash` for `GraphLearner` and all `PipeOp`s. This could break users that inherit from `PipeOp` and make use of `$hash` in the future (but is ultimately in their interest!).
