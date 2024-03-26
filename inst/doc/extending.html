@@ -361,6 +361,7 @@ well-known “Iris” task:</p>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>task <span class="ot">=</span> <span class="fu">tsk</span>(<span class="st">&quot;iris&quot;</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>task<span class="sc">$</span><span class="fu">data</span>()</span></code></pre></div>
 <pre><code>##        Species Petal.Length Petal.Width Sepal.Length Sepal.Width
+##         &lt;fctr&gt;        &lt;num&gt;       &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
 ##   1:    setosa          1.4         0.2          5.1         3.5
 ##   2:    setosa          1.4         0.2          4.9         3.0
 ##   3:    setosa          1.3         0.2          4.7         3.2
@@ -526,6 +527,7 @@ graph, and see what happens when we train it on something:</p>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gr)</span></code></pre></div>
 <pre><code>## Graph with 1 PipeOps:
 ##        ID         State sccssors prdcssors
+##    &lt;char&gt;        &lt;char&gt;   &lt;char&gt;    &lt;char&gt;
 ##  copy.two &lt;&lt;UNTRAINED&gt;&gt;</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> gr<span class="sc">$</span><span class="fu">train</span>(task)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -621,6 +623,7 @@ values:</p>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>sitask <span class="ot">=</span> <span class="fu">as_task_classif</span>(smalliris, <span class="at">target =</span> <span class="st">&quot;Species&quot;</span>)</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sitask<span class="sc">$</span><span class="fu">data</span>())</span></code></pre></div>
 <pre><code>##       Species Petal.Length Petal.Width Sepal.Length Sepal.Width
+##        &lt;fctr&gt;        &lt;num&gt;       &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
 ## 1:     setosa          1.6         0.2           NA         3.2
 ## 2: versicolor          3.9         1.4          5.2          NA
 ## 3: versicolor          4.0         1.3          5.5         2.5
@@ -634,6 +637,7 @@ values:</p>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>filtered_task <span class="ot">=</span> gr<span class="sc">$</span><span class="fu">train</span>(sitask)[[<span class="dv">1</span>]]</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filtered_task<span class="sc">$</span><span class="fu">data</span>())</span></code></pre></div>
 <pre><code>##       Species Petal.Length Petal.Width Sepal.Length Sepal.Width
+##        &lt;fctr&gt;        &lt;num&gt;       &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
 ## 1: versicolor          4.0         1.3          5.5         2.5
 ## 2:  virginica          5.0         1.5          6.0         2.2
 ## 3:  virginica          5.1         1.8          5.9         3.0</code></pre>
@@ -717,6 +721,7 @@ original “iris” <code>Task</code> data printed at the beginning:</p>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]<span class="sc">$</span><span class="fu">data</span>()</span></code></pre></div>
 <pre><code>##        Species Petal.Length Petal.Width Sepal.Length Sepal.Width
+##         &lt;fctr&gt;        &lt;num&gt;       &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
 ##   1:    setosa   -1.3357516  -1.3110521  -0.89767388  1.01560199
 ##   2:    setosa   -1.3357516  -1.3110521  -1.13920048 -0.13153881
 ##   3:    setosa   -1.3923993  -1.3110521  -1.38072709  0.32731751
@@ -813,6 +818,7 @@ constant:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>irishead <span class="ot">=</span> task<span class="sc">$</span><span class="fu">clone</span>()<span class="sc">$</span><span class="fu">filter</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>irishead<span class="sc">$</span><span class="fu">data</span>()</span></code></pre></div>
 <pre><code>##    Species Petal.Length Petal.Width Sepal.Length Sepal.Width
+##     &lt;fctr&gt;        &lt;num&gt;       &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
 ## 1:  setosa          1.4         0.2          5.1         3.5
 ## 2:  setosa          1.4         0.2          4.9         3.0
 ## 3:  setosa          1.3         0.2          4.7         3.2
@@ -823,6 +829,7 @@ constant:</p>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>dropped_task<span class="sc">$</span><span class="fu">data</span>()</span></code></pre></div>
 <pre><code>##    Species Petal.Length Sepal.Length Sepal.Width
+##     &lt;fctr&gt;        &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
 ## 1:  setosa          1.4          5.1         3.5
 ## 2:  setosa          1.4          4.9         3.0
 ## 3:  setosa          1.3          4.7         3.2
@@ -840,14 +847,18 @@ data (the whole Iris <code>Task</code>!) will still drop the
 ## [1] &quot;Petal.Length&quot; &quot;Petal.Width&quot;  &quot;Sepal.Length&quot; &quot;Sepal.Width&quot; 
 ## 
 ## $intasklayout
+## Key: &lt;id&gt;
 ##              id    type
+##          &lt;char&gt;  &lt;char&gt;
 ## 1: Petal.Length numeric
 ## 2:  Petal.Width numeric
 ## 3: Sepal.Length numeric
 ## 4:  Sepal.Width numeric
 ## 
 ## $outtasklayout
+## Key: &lt;id&gt;
 ##              id    type
+##          &lt;char&gt;  &lt;char&gt;
 ## 1: Petal.Length numeric
 ## 2: Sepal.Length numeric
 ## 3:  Sepal.Width numeric
@@ -858,6 +869,7 @@ data (the whole Iris <code>Task</code>!) will still drop the
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>dropped_predict<span class="sc">$</span><span class="fu">data</span>()</span></code></pre></div>
 <pre><code>##        Species Petal.Length Sepal.Length Sepal.Width
+##         &lt;fctr&gt;        &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
 ##   1:    setosa          1.4          5.1         3.5
 ##   2:    setosa          1.4          4.9         3.0
 ##   3:    setosa          1.3          4.7         3.2
@@ -917,6 +929,7 @@ it behaves the same.</p>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>result_posa_simple <span class="ot">=</span> gr<span class="sc">$</span><span class="fu">train</span>(task)[[<span class="dv">1</span>]]</span></code></pre></div>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>result_posa<span class="sc">$</span><span class="fu">data</span>()</span></code></pre></div>
 <pre><code>##        Species Petal.Length Petal.Width Sepal.Length Sepal.Width
+##         &lt;fctr&gt;        &lt;num&gt;       &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
 ##   1:    setosa   -1.3357516  -1.3110521  -0.89767388  1.01560199
 ##   2:    setosa   -1.3357516  -1.3110521  -1.13920048 -0.13153881
 ##   3:    setosa   -1.3923993  -1.3110521  -1.38072709  0.32731751
@@ -930,6 +943,7 @@ it behaves the same.</p>
 ## 150: virginica    0.7602115   0.7880307   0.06843254 -0.13153881</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>result_posa_simple<span class="sc">$</span><span class="fu">data</span>()</span></code></pre></div>
 <pre><code>##        Species Petal.Length Petal.Width Sepal.Length Sepal.Width
+##         &lt;fctr&gt;        &lt;num&gt;       &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
 ##   1:    setosa   -1.3357516  -1.3110521  -0.89767388  1.01560199
 ##   2:    setosa   -1.3357516  -1.3110521  -1.13920048 -0.13153881
 ##   3:    setosa   -1.3923993  -1.3110521  -1.38072709  0.32731751
@@ -1005,11 +1019,24 @@ automatically checked:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pss <span class="ot">=</span> <span class="fu">po</span>(<span class="st">&quot;scale&quot;</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pss<span class="sc">$</span>param_set)</span></code></pre></div>
 <pre><code>## &lt;ParamSet:scale&gt;
-##                id    class lower upper nlevels        default value
-## 1:         center ParamLgl    NA    NA       2           TRUE      
-## 2:          scale ParamLgl    NA    NA       2           TRUE      
-## 3:         robust ParamLgl    NA    NA       2 &lt;NoDefault[3]&gt; FALSE
-## 4: affect_columns ParamUty    NA    NA     Inf  &lt;Selector[1]&gt;</code></pre>
+##                id    class lower upper nlevels
+##            &lt;char&gt;   &lt;char&gt; &lt;num&gt; &lt;num&gt;   &lt;num&gt;
+## 1:         center ParamLgl    NA    NA       2
+## 2:          scale ParamLgl    NA    NA       2
+## 3:         robust ParamLgl    NA    NA       2
+## 4: affect_columns ParamUty    NA    NA     Inf
+##                                                                                      default
+##                                                                                       &lt;list&gt;
+## 1:                                                                                      TRUE
+## 2:                                                                                      TRUE
+## 3: &lt;NoDefault&gt;\n  Public:\n    clone: function (deep = FALSE) \n    initialize: function () 
+## 4:                                                                             &lt;Selector[1]&gt;
+##     value
+##    &lt;list&gt;
+## 1:       
+## 2:       
+## 3:  FALSE
+## 4:</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>pss<span class="sc">$</span>param_set<span class="sc">$</span>values<span class="sc">$</span>center <span class="ot">=</span> <span class="cn">FALSE</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pss<span class="sc">$</span>param_set<span class="sc">$</span>values)</span></code></pre></div>
 <pre><code>## $robust
@@ -1050,6 +1077,7 @@ original dataset, unchanged.</p>
 <span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]<span class="sc">$</span><span class="fu">data</span>()</span></code></pre></div>
 <pre><code>##        Species Petal.Length Petal.Width Sepal.Length Sepal.Width
+##         &lt;fctr&gt;        &lt;num&gt;       &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
 ##   1:    setosa          1.4         0.2          5.1         3.5
 ##   2:    setosa          1.4         0.2          4.9         3.0
 ##   3:    setosa          1.3         0.2          4.7         3.2
