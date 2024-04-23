@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.5.1
+Version: 0.5.2
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -51,13 +51,14 @@ Suggests: ggplot2, glmnet, igraph, knitr, lme4, mlbench, bbotk (>=
         0.3.0), mlr3filters (>= 0.1.1), mlr3learners, mlr3measures,
         nloptr, quanteda, rmarkdown, rpart, stopwords, testthat,
         visNetwork, bestNormalize, fastICA, kernlab, smotefamily,
-        evaluate, NMF, MASS, kknn, GenSA, methods, vtreat, future
+        evaluate, NMF, MASS, kknn, GenSA, methods, vtreat, future,
+        htmlwidgets
 ByteCompile: true
 Encoding: UTF-8
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 NeedsCompilation: no
-RoxygenNote: 7.2.3.9000
+RoxygenNote: 7.3.1
 VignetteBuilder: knitr
 Collate: 'Graph.R' 'GraphLearner.R' 'mlr_pipeops.R' 'multiplicity.R'
         'utils.R' 'PipeOp.R' 'PipeOpEnsemble.R' 'LearnerAvg.R'
@@ -86,10 +87,11 @@ Collate: 'Graph.R' 'GraphLearner.R' 'mlr_pipeops.R' 'multiplicity.R'
         'PipeOpYeoJohnson.R' 'Selector.R' 'assert_graph.R'
         'bibentries.R' 'greplicate.R' 'gunion.R' 'mlr_graphs.R'
         'operators.R' 'pipeline_bagging.R' 'pipeline_branch.R'
-        'pipeline_greplicate.R' 'pipeline_ovr.R' 'pipeline_robustify.R'
-        'pipeline_stacking.R' 'pipeline_targettrafo.R' 'po.R' 'ppl.R'
-        'reexports.R' 'typecheck.R' 'zzz.R'
-Packaged: 2024-03-26 17:19:27 UTC; user
+        'pipeline_convert_types.R' 'pipeline_greplicate.R'
+        'pipeline_ovr.R' 'pipeline_robustify.R' 'pipeline_stacking.R'
+        'pipeline_targettrafo.R' 'po.R' 'ppl.R' 'reexports.R'
+        'typecheck.R' 'zzz.R'
+Packaged: 2024-04-23 18:20:38 UTC; user
 Author: Martin Binder [aut, cre],
   Florian Pfisterer [aut] (<https://orcid.org/0000-0001-8867-762X>),
   Lennart Schneider [aut] (<https://orcid.org/0000-0003-4152-5308>),
@@ -99,4 +101,4 @@ Author: Martin Binder [aut, cre],
   Susanne Dandl [aut]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2024-03-26 19:50:02 UTC
+Date/Publication: 2024-04-23 20:50:09 UTC
