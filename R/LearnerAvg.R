@@ -3,7 +3,7 @@
 #' @usage mlr_learners_classif.avg
 #' @name mlr_learners_avg
 #' @aliases mlr_learners_classif.avg
-#' @format [`R6Class`] object inheriting from [`mlr3::LearnerClassif`]/[`mlr3::Learner`].
+#' @format [`R6Class`][R6::R6Class] object inheriting from [`mlr3::LearnerClassif`]/[`mlr3::Learner`].
 #'
 #' @description
 #' Computes a weighted average of inputs.
@@ -23,7 +23,7 @@
 #' incoming features.
 #'
 #' @section Parameters:
-#' The parameters are the parameters inherited from [`LearnerClassif`], as well as:
+#' The parameters are the parameters inherited from [`LearnerClassif`][mlr3::LearnerClassif], as well as:
 #'  * `measure` :: [`Measure`][mlr3::Measure] | `character` \cr
 #'    [`Measure`][mlr3::Measure] to optimize for.
 #'    Will be converted to a [`Measure`][mlr3::Measure] in case it is `character`.
@@ -32,7 +32,7 @@
 #'  * `optimizer` :: [`Optimizer`][bbotk::Optimizer] | `character(1)`\cr
 #'    [`Optimizer`][bbotk::Optimizer] used to find optimal thresholds.
 #'    If `character`, converts to [`Optimizer`][bbotk::Optimizer]
-#'    via [`opt`][bbotk::opt]. Initialized to [`OptimizerNLoptr`][bbotk::OptimizerNLoptr].
+#'    via [`opt`][bbotk::opt]. Initialized to `OptimizerNLoptr`.
 #'    Nloptr hyperparameters are initialized to `xtol_rel = 1e-8`, `algorithm = "NLOPT_LN_COBYLA"`
 #'    and equal initial weights for each learner.
 #'    For more fine-grained control, it is recommended to supply a instantiated [`Optimizer`][bbotk::Optimizer].
@@ -191,7 +191,7 @@ optimize_weights_learneravg = function(self, task, n_weights, data) {
       optimizer = pars$optimizer
       if (inherits(optimizer, "character")) {
         optimizer = bbotk::opt(optimizer)
-        if (inherits(optimizer, "OptimizerNLoptr")) {
+        if (inherits(optimizer, "OptimizerNLoptr") || inherits(optimizer, "OptimizerBatchNLoptr")) {
           optimizer$param_set$values = list(xtol_rel = 1e-8, algorithm = "NLOPT_LN_COBYLA", start_values = "center")
         }
       }

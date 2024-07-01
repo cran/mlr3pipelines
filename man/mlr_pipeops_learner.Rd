@@ -5,7 +5,7 @@
 \alias{PipeOpLearner}
 \title{Wrap a Learner into a PipeOp}
 \format{
-\code{\link{R6Class}} object inheriting from \code{\link{PipeOp}}.
+\code{\link[R6:R6Class]{R6Class}} object inheriting from \code{\link{PipeOp}}.
 }
 \description{
 Wraps an \code{\link[mlr3:Learner]{mlr3::Learner}} into a \code{\link{PipeOp}}.
@@ -51,11 +51,11 @@ The \verb{$state} is set to the \verb{$state} slot of the \code{\link[mlr3:Learn
 \itemize{
 \item \code{model} :: \code{any}\cr
 Model created by the \code{\link[mlr3:Learner]{Learner}}'s \verb{$.train()} function.
-\item \code{train_log} :: \code{\link{data.table}} with columns \code{class} (\code{character}), \code{msg} (\code{character})\cr
+\item \code{train_log} :: \code{\link[data.table:data.table]{data.table}} with columns \code{class} (\code{character}), \code{msg} (\code{character})\cr
 Errors logged during training.
 \item \code{train_time} :: \code{numeric(1)}\cr
 Training time, in seconds.
-\item \code{predict_log} :: \code{NULL} | \code{\link{data.table}} with columns \code{class} (\code{character}), \code{msg} (\code{character})\cr
+\item \code{predict_log} :: \code{NULL} | \code{\link[data.table:data.table]{data.table}} with columns \code{class} (\code{character}), \code{msg} (\code{character})\cr
 Errors logged during prediction.
 \item \code{predict_time} :: \code{NULL} | \code{numeric(1)}
 Prediction time, in seconds.
@@ -80,6 +80,17 @@ Fields inherited from \code{\link{PipeOp}}, as well as:
 \code{\link[mlr3:Learner]{Learner}} that is being wrapped. Read-only.
 \item \code{learner_model} :: \code{\link[mlr3:Learner]{Learner}}\cr
 \code{\link[mlr3:Learner]{Learner}} that is being wrapped. This learner contains the model if the \code{PipeOp} is trained. Read-only.
+\item \code{validate} :: \code{"predefined"} or \code{NULL}\cr
+This field can only be set for \code{Learner}s that have the \code{"validation"} property.
+Setting the field to \code{"predefined"} means that the wrapped \code{Learner} will use the internal validation task,
+otherwise it will be ignored.
+Note that specifying \emph{how} the validation data is created is possible via the \verb{$validate} field of the \code{\link{GraphLearner}}.
+For each \code{PipeOp} it is then only possible to either use it (\code{"predefined"}) or not use it (\code{NULL}).
+Also see \code{\link{set_validate.GraphLearner}} for more information.
+\item \code{internal_tuned_values} :: named \code{list()} or \code{NULL}\cr
+The internally tuned values if the wrapped \code{Learner} supports internal tuning, \code{NULL} otherwise.
+\item \code{internal_valid_scores} :: named \code{list()} or \code{NULL}\cr
+The internal validation scores if the wrapped \code{Learner} supports internal validation, \code{NULL} otherwise.
 }
 }
 

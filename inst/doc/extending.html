@@ -1018,31 +1018,19 @@ passes this on to the <code>super$initialize</code> function:</p>
 automatically checked:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pss <span class="ot">=</span> <span class="fu">po</span>(<span class="st">&quot;scale&quot;</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pss<span class="sc">$</span>param_set)</span></code></pre></div>
-<pre><code>## &lt;ParamSet:scale&gt;
-##                id    class lower upper nlevels
-##            &lt;char&gt;   &lt;char&gt; &lt;num&gt; &lt;num&gt;   &lt;num&gt;
-## 1:         center ParamLgl    NA    NA       2
-## 2:          scale ParamLgl    NA    NA       2
-## 3:         robust ParamLgl    NA    NA       2
-## 4: affect_columns ParamUty    NA    NA     Inf
-##                                                                                      default
-##                                                                                       &lt;list&gt;
-## 1:                                                                                      TRUE
-## 2:                                                                                      TRUE
-## 3: &lt;NoDefault&gt;\n  Public:\n    clone: function (deep = FALSE) \n    initialize: function () 
-## 4:                                                                             &lt;Selector[1]&gt;
-##     value
-##    &lt;list&gt;
-## 1:       
-## 2:       
-## 3:  FALSE
-## 4:</code></pre>
+<pre><code>## &lt;ParamSet(4)&gt;
+##                id    class lower upper nlevels        default  value
+##            &lt;char&gt;   &lt;char&gt; &lt;num&gt; &lt;num&gt;   &lt;num&gt;         &lt;list&gt; &lt;list&gt;
+## 1:         center ParamLgl    NA    NA       2           TRUE [NULL]
+## 2:          scale ParamLgl    NA    NA       2           TRUE [NULL]
+## 3:         robust ParamLgl    NA    NA       2 &lt;NoDefault[0]&gt;  FALSE
+## 4: affect_columns ParamUty    NA    NA     Inf  &lt;Selector[1]&gt; [NULL]</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>pss<span class="sc">$</span>param_set<span class="sc">$</span>values<span class="sc">$</span>center <span class="ot">=</span> <span class="cn">FALSE</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pss<span class="sc">$</span>param_set<span class="sc">$</span>values)</span></code></pre></div>
-<pre><code>## $robust
+<pre><code>## $center
 ## [1] FALSE
 ## 
-## $center
+## $robust
 ## [1] FALSE</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>pss<span class="sc">$</span>param_set<span class="sc">$</span>values<span class="sc">$</span>scale <span class="ot">=</span> <span class="st">&quot;TRUE&quot;</span> <span class="co"># bad input is checked!</span></span></code></pre></div>
 <pre><code>## Error in self$assert(xs): Assertion on &#39;xs&#39; failed: scale: Must be of type &#39;logical flag&#39;, not &#39;character&#39;.</code></pre>

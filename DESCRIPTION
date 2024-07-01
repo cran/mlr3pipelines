@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.5.2
+Version: 0.6.0
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -28,7 +28,7 @@ Authors@R:
              comment = c(ORCID = "0000-0001-9754-0393")),
       person(given = "Sebastian",
              family = "Fischer",
-             role = "ctb",
+             role = "aut",
              email = "sebf.fischer@gmail.com",
              comment = c(ORCID = "0000-0002-9609-3197")),
       person(given = "Susanne",
@@ -46,7 +46,7 @@ URL: https://mlr3pipelines.mlr-org.com,
 BugReports: https://github.com/mlr-org/mlr3pipelines/issues
 Depends: R (>= 3.1.0)
 Imports: backports, checkmate, data.table, digest, lgr, mlr3 (>=
-        0.6.0), mlr3misc (>= 0.9.0), paradox, R6, withr
+        0.20.0), mlr3misc (>= 0.9.0), paradox, R6, withr
 Suggests: ggplot2, glmnet, igraph, knitr, lme4, mlbench, bbotk (>=
         0.3.0), mlr3filters (>= 0.1.1), mlr3learners, mlr3measures,
         nloptr, quanteda, rmarkdown, rpart, stopwords, testthat,
@@ -58,7 +58,7 @@ Encoding: UTF-8
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 NeedsCompilation: no
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 Collate: 'Graph.R' 'GraphLearner.R' 'mlr_pipeops.R' 'multiplicity.R'
         'utils.R' 'PipeOp.R' 'PipeOpEnsemble.R' 'LearnerAvg.R'
@@ -91,14 +91,14 @@ Collate: 'Graph.R' 'GraphLearner.R' 'mlr_pipeops.R' 'multiplicity.R'
         'pipeline_ovr.R' 'pipeline_robustify.R' 'pipeline_stacking.R'
         'pipeline_targettrafo.R' 'po.R' 'ppl.R' 'reexports.R'
         'typecheck.R' 'zzz.R'
-Packaged: 2024-04-23 18:20:38 UTC; user
+Packaged: 2024-07-01 13:00:22 UTC; user
 Author: Martin Binder [aut, cre],
   Florian Pfisterer [aut] (<https://orcid.org/0000-0001-8867-762X>),
   Lennart Schneider [aut] (<https://orcid.org/0000-0003-4152-5308>),
   Bernd Bischl [aut] (<https://orcid.org/0000-0001-6002-6980>),
   Michel Lang [aut] (<https://orcid.org/0000-0001-9754-0393>),
-  Sebastian Fischer [ctb] (<https://orcid.org/0000-0002-9609-3197>),
+  Sebastian Fischer [aut] (<https://orcid.org/0000-0002-9609-3197>),
   Susanne Dandl [aut]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2024-04-23 20:50:09 UTC
+Date/Publication: 2024-07-01 13:30:02 UTC
