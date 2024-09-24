@@ -1033,7 +1033,7 @@ automatically checked:</p>
 ## $robust
 ## [1] FALSE</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>pss<span class="sc">$</span>param_set<span class="sc">$</span>values<span class="sc">$</span>scale <span class="ot">=</span> <span class="st">&quot;TRUE&quot;</span> <span class="co"># bad input is checked!</span></span></code></pre></div>
-<pre><code>## Error in self$assert(xs): Assertion on &#39;xs&#39; failed: scale: Must be of type &#39;logical flag&#39;, not &#39;character&#39;.</code></pre>
+<pre><code>## Error in self$assert(xs, sanitize = TRUE): Assertion on &#39;xs&#39; failed: scale: Must be of type &#39;logical flag&#39;, not &#39;character&#39;.</code></pre>
 <p>How <code>PipeOpScale</code> handles its parameters can be seen in
 its <code>$.train_dt</code> method: It gets the relevant parameters from
 its <code>$values</code> slot and uses them in the

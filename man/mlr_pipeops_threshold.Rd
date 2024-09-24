@@ -52,7 +52,13 @@ at level \code{0.5}.
 
 \section{Fields}{
 
-Only fields inherited from \code{\link{PipeOp}}.
+Fields inherited from \code{\link{PipeOp}}, as well as:
+\itemize{
+\item \code{predict_type} :: \code{character(1)}\cr
+Type of prediction to return. Either \code{"prob"} (default) or \code{"response"}.
+Setting to \code{"response"} should rarely be used; it may potentially save some memory but has
+no other benefits.
+}
 }
 
 \section{Methods}{
@@ -81,6 +87,8 @@ Other PipeOps:
 \code{\link{PipeOpTaskPreproc}},
 \code{\link{PipeOpTaskPreprocSimple}},
 \code{\link{mlr_pipeops}},
+\code{\link{mlr_pipeops_adas}},
+\code{\link{mlr_pipeops_blsmote}},
 \code{\link{mlr_pipeops_boxcox}},
 \code{\link{mlr_pipeops_branch}},
 \code{\link{mlr_pipeops_chunk}},
@@ -128,11 +136,13 @@ Other PipeOps:
 \code{\link{mlr_pipeops_removeconstants}},
 \code{\link{mlr_pipeops_renamecolumns}},
 \code{\link{mlr_pipeops_replicate}},
+\code{\link{mlr_pipeops_rowapply}},
 \code{\link{mlr_pipeops_scale}},
 \code{\link{mlr_pipeops_scalemaxabs}},
 \code{\link{mlr_pipeops_scalerange}},
 \code{\link{mlr_pipeops_select}},
 \code{\link{mlr_pipeops_smote}},
+\code{\link{mlr_pipeops_smotenc}},
 \code{\link{mlr_pipeops_spatialsign}},
 \code{\link{mlr_pipeops_subsample}},
 \code{\link{mlr_pipeops_targetinvert}},
