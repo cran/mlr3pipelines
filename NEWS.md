@@ -1,7 +1,17 @@
+# mlr3pipelines 0.7.1
+
+* Compatibility fix for upcoming `mlr3`
+* New down-sampling PipeOps for inbalanced data: `PipeOpTomek` / `po("tomek")` and `PipeOpNearmiss` / `po("nearmiss")`
+* New PipeOp `PipeOpLearnerPICVPlus / po("learner_pi_cvplus")`
+* New PipeOp for Quantile Regression `PipeOpLearnerQuantiles` / `po(learner_quantiles)`
+* `GraphLearner` has new active bindings/methods as shortcuts for active bindings/methods of the underlying `Graph`:
+`$pipeops`, `$edges`, `$pipeops_param_set`, and `$pipeops_param_set_values` as well as `$ids()` and `$plot()`.
+
 # mlr3pipelines 0.7.0
 
 * New PipeOp `PipeOpRowApply` / `po("rowapply")`
 * Empty `PipeOp` IDs now explicitly forbidden.
+* Bugfix: `Graph$tran()` / `Graph$predict()` with `single_input = FALSE` now correctly handles `PipeOp`s with multiple inputs.
 * `GraphLearner$base_learner()` now works with `PipeOpBranch`, and is generally more robust.
 * `GraphLearner` now supports `$importance`, `$selected_features()`, `$oob_error()`, and `$loglik()`.
   These are computed from the underlying `Learner`.
@@ -10,16 +20,12 @@
 * `GraphLearner$predict_type` handling more robust now.
 * `PipeOpThreshold` and `PipeOpTuneThreshold` now have the `$predict_type` `"prob"`.
   They can be set to `"response"`, in which case the probability predictions are discarded, potentially saving memory.
-* Bugfix: `Graph$tran()` / `Graph$predict()` with `single_input = FALSE` now correctly handles `PipeOp`s with multiple inputs.
 * Bugfix for handling multiplicities in PipeOps with vararg channels.
 * Bugfix: `PipeOpImputeOOR` now retains the `.MISSING` level in factors during prediction that were imputed during training, but had no missing values during prediction.
 * `as_data_table(po())` now works even when some `PipeOp`s can not be constructed.
   For these `PipeOp`s, `NA` is reported in most columns.
-* New PipeOp: `PipeOpRowApply` / `po("rowapply")`
-* New PipeOps for handling inbalanced data: `PipeOpADAS` / `po("adas")` and `PipeOpBLSmote` / `po("blsmote")`
-* New PipeOp for handling inbalanced data: `PipeOpSmoteNC` / `po("smotenc")`
-* New internal infrastructure for reasoning about active path branches in `CnfFormula` and other `Cnf*` objects.
 * Compatibility with upcoming `mlr3` release.
+* New PipeOps for handling inbalanced data: `PipeOpADAS` / `po("adas")`, `PipeOpBLSmote` / `po("blsmote")` and `PipeOpSmoteNC` / `po("smotenc")`
 
 # mlr3pipelines 0.6.0
 

@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.7.0
+Version: 0.7.1
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -43,7 +43,11 @@ Authors@R:
              family = "Mücke",
              role = "ctb",
              email = "muecke.maximilian@gmail.com",
-             comment = c(ORCID = "0009-0000-9432-9795")))
+             comment = c(ORCID = "0009-0000-9432-9795")),
+      person(given = "Lona",
+             family = "Koers",
+             role = "ctb",
+             email = "lona.koers@gmail.com"))
 Description: Dataflow programming toolkit that enriches 'mlr3' with a diverse
   set of pipelining operators ('PipeOps') that can be composed into graphs.
   Operations exist for data preprocessing, model fitting, and ensemble
@@ -85,25 +89,27 @@ Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
         'PipeOpImputeLearner.R' 'PipeOpImputeMean.R'
         'PipeOpImputeMedian.R' 'PipeOpImputeMode.R' 'PipeOpImputeOOR.R'
         'PipeOpImputeSample.R' 'PipeOpKernelPCA.R' 'PipeOpLearner.R'
-        'PipeOpLearnerCV.R' 'PipeOpMissingIndicators.R'
+        'PipeOpLearnerCV.R' 'PipeOpLearnerPICVPlus.R'
+        'PipeOpLearnerQuantiles.R' 'PipeOpMissingIndicators.R'
         'PipeOpModelMatrix.R' 'PipeOpMultiplicity.R' 'PipeOpMutate.R'
-        'PipeOpNMF.R' 'PipeOpNOP.R' 'PipeOpOVR.R' 'PipeOpPCA.R'
-        'PipeOpProxy.R' 'PipeOpQuantileBin.R'
+        'PipeOpNMF.R' 'PipeOpNOP.R' 'PipeOpNearmiss.R' 'PipeOpOVR.R'
+        'PipeOpPCA.R' 'PipeOpProxy.R' 'PipeOpQuantileBin.R'
         'PipeOpRandomProjection.R' 'PipeOpRandomResponse.R'
         'PipeOpRegrAvg.R' 'PipeOpRemoveConstants.R'
         'PipeOpRenameColumns.R' 'PipeOpRowApply.R' 'PipeOpScale.R'
         'PipeOpScaleMaxAbs.R' 'PipeOpScaleRange.R' 'PipeOpSelect.R'
         'PipeOpSmote.R' 'PipeOpSmoteNC.R' 'PipeOpSpatialSign.R'
         'PipeOpSubsample.R' 'PipeOpTextVectorizer.R'
-        'PipeOpThreshold.R' 'PipeOpTrafo.R' 'PipeOpTuneThreshold.R'
-        'PipeOpUnbranch.R' 'PipeOpVtreat.R' 'PipeOpYeoJohnson.R'
-        'Selector.R' 'assert_graph.R' 'bibentries.R' 'greplicate.R'
-        'gunion.R' 'mlr_graphs.R' 'operators.R' 'pipeline_bagging.R'
+        'PipeOpThreshold.R' 'PipeOpTomek.R' 'PipeOpTrafo.R'
+        'PipeOpTuneThreshold.R' 'PipeOpUnbranch.R' 'PipeOpVtreat.R'
+        'PipeOpYeoJohnson.R' 'Selector.R' 'TaskRegr_boston_housing.R'
+        'assert_graph.R' 'bibentries.R' 'greplicate.R' 'gunion.R'
+        'mlr_graphs.R' 'operators.R' 'pipeline_bagging.R'
         'pipeline_branch.R' 'pipeline_convert_types.R'
         'pipeline_greplicate.R' 'pipeline_ovr.R' 'pipeline_robustify.R'
         'pipeline_stacking.R' 'pipeline_targettrafo.R' 'po.R' 'ppl.R'
         'reexports.R' 'typecheck.R' 'zzz.R'
-Packaged: 2024-09-24 14:38:24 UTC; user
+Packaged: 2024-11-14 18:02:37 UTC; user
 Author: Martin Binder [aut, cre],
   Florian Pfisterer [aut] (<https://orcid.org/0000-0001-8867-762X>),
   Lennart Schneider [aut] (<https://orcid.org/0000-0003-4152-5308>),
@@ -112,7 +118,8 @@ Author: Martin Binder [aut, cre],
   Sebastian Fischer [aut] (<https://orcid.org/0000-0002-9609-3197>),
   Susanne Dandl [aut],
   Keno Mersmann [ctb],
-  Maximilian Mücke [ctb] (<https://orcid.org/0009-0000-9432-9795>)
+  Maximilian Mücke [ctb] (<https://orcid.org/0009-0000-9432-9795>),
+  Lona Koers [ctb]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2024-09-24 15:30:02 UTC
+Date/Publication: 2024-11-14 22:40:02 UTC
