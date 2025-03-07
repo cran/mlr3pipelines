@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.7.1
+Version: 0.7.2
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -59,9 +59,9 @@ URL: https://mlr3pipelines.mlr-org.com,
 BugReports: https://github.com/mlr-org/mlr3pipelines/issues
 Depends: R (>= 3.1.0)
 Imports: backports, checkmate, data.table, digest, lgr, mlr3 (>=
-        0.20.0), mlr3misc (>= 0.9.0), paradox, R6, withr
+        0.20.0), mlr3misc (>= 0.16.0), paradox, R6, withr
 Suggests: ggplot2, glmnet, igraph, knitr, lme4, mlbench, bbotk (>=
-        0.3.0), mlr3filters (>= 0.1.1), mlr3learners, mlr3measures,
+        0.3.0), mlr3filters (>= 0.8.1), mlr3learners, mlr3measures,
         nloptr, quanteda, rmarkdown, rpart, stopwords, testthat,
         visNetwork, bestNormalize, fastICA, kernlab, smotefamily,
         evaluate, NMF, MASS, kknn, GenSA, methods, vtreat, future,
@@ -82,18 +82,19 @@ Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
         'PipeOpClassBalancing.R' 'PipeOpClassWeights.R'
         'PipeOpClassifAvg.R' 'PipeOpColApply.R' 'PipeOpColRoles.R'
         'PipeOpCollapseFactors.R' 'PipeOpCopy.R' 'PipeOpDateFeatures.R'
-        'PipeOpEncode.R' 'PipeOpEncodeImpact.R' 'PipeOpEncodeLmer.R'
-        'PipeOpFeatureUnion.R' 'PipeOpFilter.R' 'PipeOpFixFactors.R'
-        'PipeOpHistBin.R' 'PipeOpICA.R' 'PipeOpImpute.R'
-        'PipeOpImputeConstant.R' 'PipeOpImputeHist.R'
-        'PipeOpImputeLearner.R' 'PipeOpImputeMean.R'
-        'PipeOpImputeMedian.R' 'PipeOpImputeMode.R' 'PipeOpImputeOOR.R'
-        'PipeOpImputeSample.R' 'PipeOpKernelPCA.R' 'PipeOpLearner.R'
-        'PipeOpLearnerCV.R' 'PipeOpLearnerPICVPlus.R'
-        'PipeOpLearnerQuantiles.R' 'PipeOpMissingIndicators.R'
-        'PipeOpModelMatrix.R' 'PipeOpMultiplicity.R' 'PipeOpMutate.R'
-        'PipeOpNMF.R' 'PipeOpNOP.R' 'PipeOpNearmiss.R' 'PipeOpOVR.R'
-        'PipeOpPCA.R' 'PipeOpProxy.R' 'PipeOpQuantileBin.R'
+        'PipeOpDecode.R' 'PipeOpEncode.R' 'PipeOpEncodeImpact.R'
+        'PipeOpEncodeLmer.R' 'PipeOpEncodePL.R' 'PipeOpFeatureUnion.R'
+        'PipeOpFilter.R' 'PipeOpFixFactors.R' 'PipeOpHistBin.R'
+        'PipeOpICA.R' 'PipeOpImpute.R' 'PipeOpImputeConstant.R'
+        'PipeOpImputeHist.R' 'PipeOpImputeLearner.R'
+        'PipeOpImputeMean.R' 'PipeOpImputeMedian.R'
+        'PipeOpImputeMode.R' 'PipeOpImputeOOR.R' 'PipeOpImputeSample.R'
+        'PipeOpKernelPCA.R' 'PipeOpLearner.R' 'PipeOpLearnerCV.R'
+        'PipeOpLearnerPICVPlus.R' 'PipeOpLearnerQuantiles.R'
+        'PipeOpMissingIndicators.R' 'PipeOpModelMatrix.R'
+        'PipeOpMultiplicity.R' 'PipeOpMutate.R' 'PipeOpNMF.R'
+        'PipeOpNOP.R' 'PipeOpNearmiss.R' 'PipeOpOVR.R' 'PipeOpPCA.R'
+        'PipeOpProxy.R' 'PipeOpQuantileBin.R'
         'PipeOpRandomProjection.R' 'PipeOpRandomResponse.R'
         'PipeOpRegrAvg.R' 'PipeOpRemoveConstants.R'
         'PipeOpRenameColumns.R' 'PipeOpRowApply.R' 'PipeOpScale.R'
@@ -109,7 +110,7 @@ Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
         'pipeline_greplicate.R' 'pipeline_ovr.R' 'pipeline_robustify.R'
         'pipeline_stacking.R' 'pipeline_targettrafo.R' 'po.R' 'ppl.R'
         'reexports.R' 'typecheck.R' 'zzz.R'
-Packaged: 2024-11-14 18:02:37 UTC; user
+Packaged: 2025-03-07 15:50:23 UTC; user
 Author: Martin Binder [aut, cre],
   Florian Pfisterer [aut] (<https://orcid.org/0000-0001-8867-762X>),
   Lennart Schneider [aut] (<https://orcid.org/0000-0003-4152-5308>),
@@ -122,4 +123,4 @@ Author: Martin Binder [aut, cre],
   Lona Koers [ctb]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2024-11-14 22:40:02 UTC
+Date/Publication: 2025-03-07 18:10:02 UTC

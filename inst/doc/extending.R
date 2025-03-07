@@ -4,49 +4,49 @@ task = tsk("iris")
 task$data()
 
 ## ----extending-022, eval = FALSE, tidy = FALSE--------------------------------
-#  PipeOpCopyTwo = R6::R6Class("PipeOpCopyTwo",
-#    inherit = mlr3pipelines::PipeOp,
-#    public = list(
-#      initialize = function(id = "copy.two") {
-#        ....
-#      },
-#    ),
-#    private == list(
-#      .train = function(inputs) {
-#        ....
-#      },
-#  
-#      .predict = function(inputs) {
-#        ....
-#      }
-#    )
-#  )
+# PipeOpCopyTwo = R6::R6Class("PipeOpCopyTwo",
+#   inherit = mlr3pipelines::PipeOp,
+#   public = list(
+#     initialize = function(id = "copy.two") {
+#       ....
+#     },
+#   ),
+#   private == list(
+#     .train = function(inputs) {
+#       ....
+#     },
+# 
+#     .predict = function(inputs) {
+#       ....
+#     }
+#   )
+# )
 
 ## ----extending-023, eval = FALSE----------------------------------------------
-#  initialize = function(id = "copy.two") {
-#    input = data.table::data.table(name = "input", train = "*", predict = "*")
-#    # the following will create two rows and automatically fill the `train`
-#    # and `predict` cols with "*"
-#    output = data.table::data.table(
-#      name = c("output1", "output2"),
-#      train = "*", predict = "*"
-#    )
-#    super$initialize(id,
-#      input = input,
-#      output = output
-#    )
-#  }
+# initialize = function(id = "copy.two") {
+#   input = data.table::data.table(name = "input", train = "*", predict = "*")
+#   # the following will create two rows and automatically fill the `train`
+#   # and `predict` cols with "*"
+#   output = data.table::data.table(
+#     name = c("output1", "output2"),
+#     train = "*", predict = "*"
+#   )
+#   super$initialize(id,
+#     input = input,
+#     output = output
+#   )
+# }
 
 ## ----extending-024, eval = FALSE----------------------------------------------
-#  .train = function(inputs) {
-#    self$state = list()
-#    c(inputs, inputs)
-#  }
+# .train = function(inputs) {
+#   self$state = list()
+#   c(inputs, inputs)
+# }
 
 ## ----extending-025, eval = FALSE----------------------------------------------
-#  .predict = function(inputs) {
-#    c(inputs, inputs)
-#  }
+# .predict = function(inputs) {
+#   c(inputs, inputs)
+# }
 
 ## ----extending-026, tidy = FALSE----------------------------------------------
 PipeOpCopyTwo = R6::R6Class("PipeOpCopyTwo",
@@ -251,7 +251,9 @@ pss$param_set$values$center = FALSE
 print(pss$param_set$values)
 
 ## ----extending-045, error = TRUE----------------------------------------------
+try({
 pss$param_set$values$scale = "TRUE" # bad input is checked!
+})
 
 ## ----extending-046------------------------------------------------------------
 PipeOpScale$private_methods$.train_dt
