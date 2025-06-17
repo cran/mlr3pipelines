@@ -30,7 +30,8 @@ List of hyperparameter settings, overwriting the hyperparameter settings that wo
 
 \section{Input and Output Channels}{
 
-Input and output channels are inherited from \code{\link{PipeOpTaskPreproc}}.
+Input and output channels are inherited from \code{\link{PipeOpTaskPreproc}}. Instead of a \code{\link[mlr3:Task]{Task}}, a
+\code{\link[mlr3:TaskSupervised]{TaskSupervised}} is used as input and output during training and prediction.
 
 The output is the input \code{\link[mlr3:Task]{Task}} with all affected features "prepared" by vtreat.
 If vtreat found "no usable vars", the input \code{\link[mlr3:Task]{Task}} is returned unaltered.
@@ -82,7 +83,7 @@ If \code{TRUE} force cross-validated significance calculations on all variables.
 If \code{TRUE} use \code{\link[stats:glm]{stats::glm()}} linkspace, if FALSE use \code{\link[stats:lm]{stats::lm()}} for scaling.
 \item \code{verbose} :: \code{logical(1)}\cr
 If \code{TRUE} print progress.
-\item \code{use_paralell} :: \code{logical(1)}\cr
+\item \code{use_parallel} :: \code{logical(1)}\cr
 If \code{TRUE} use parallel methods.
 \item \code{missingness_imputation} :: \code{function}\cr
 Function of signature f(values: numeric, weights: numeric), simple missing value imputer.\cr

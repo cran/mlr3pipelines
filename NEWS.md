@@ -1,3 +1,14 @@
+# mlr3pipelines 0.8.0
+
+* Added missing error for predicting with untrained `PipeOp`s / `Graph`s.
+* Fix: Corrected typo in the hyperparameter name `use_parallel` of `PipeOpVtreat`.
+* Fix: Do not overwrite initial hyperparameter settings of `bbotk::OptimizerBatchNLoptr` in `LearnerClassifAvg` / `LearnerRegrAvg`'s internal `optimize_weights_learneravg` function.
+* Added new convenience function `preproc()` for easier training of or prediction with `PipeOp`s or `Graph`s.
+* Fix: `PipeOpVtreat`, `PipeOpEncodeImpact`, and `PipeOpEncodeLmer` now accept the more precise `TaskSupervised` instead of `Task` as input for training and prediction.
+* Docs: Added missing documentation for the `task_type` of the input and output channels of `PipeOp`s that inherit from `PipeOpTaskPreproc` and set a non-default `task_type`.
+* Fix: `PipeOpEncodeLmer`, `PipeOpADAS`, `PipeOpBLSmote`, `PipeOpSmote`, and `PipeOpSmoteNC` no longer throw an error in case of empty target levels during training. 
+* Fix: `PipeOpClassBalancing` now handles unseen target levels by ignoring them during upsampling instead of producing `NA`s.
+
 # mlr3pipelines 0.7.2
 
 * New parameter `no_collapse_above_absolute` for `PipeOpCollapseFactors` / `po("collapse_factors")`.

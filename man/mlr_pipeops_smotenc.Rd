@@ -38,7 +38,8 @@ List of hyperparameter settings, overwriting the hyperparameter settings that wo
 
 \section{Input and Output Channels}{
 
-Input and output channels are inherited from \code{\link{PipeOpTaskPreproc}}.
+Input and output channels are inherited from \code{\link{PipeOpTaskPreproc}}. Instead of a \code{\link[mlr3:Task]{Task}}, a
+\code{\link[mlr3:TaskClassif]{TaskClassif}} is used as input and output during training and prediction.
 
 The output during training is the input \code{\link[mlr3:Task]{Task}} with added synthetic rows for the minority class.
 The output during prediction is the unchanged input.
@@ -58,6 +59,12 @@ Number of nearest neighbors used for generating new values from the minority cla
 \item \code{over_ratio} :: \code{numeric(1)}\cr
 Ratio of the majority to minority class. Default is \code{1}. For details, see \code{\link[themis:smotenc]{themis::smotenc}}.
 }
+}
+
+\section{Internals}{
+
+If a target level is unobserved during training, no synthetic data points will be generated for that class.
+No error is raised; the unobserved class is simply ignored.
 }
 
 \section{Fields}{

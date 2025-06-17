@@ -208,7 +208,7 @@ should not modify the \code{PipeOp} in any way.\cr
 
 \section{Inheriting}{
 
-To create your own \code{PipeOp}, you need to overload the \code{private$.train()} and \code{private$.test()} functions.
+To create your own \code{PipeOp}, you need to overload the \code{private$.train()} and \code{private$.predict()} functions.
 It is most likely also necessary to overload the \verb{$initialize()} function to do additional initialization.
 The \verb{$initialize()} method should have at least the arguments \code{id} and \code{param_vals}, which should be passed on to \code{super$initialize()} unchanged.
 \code{id} should have a useful default value, and \code{param_vals} should have the default value \code{list()}, meaning no initialization of hyperparameters.
@@ -217,6 +217,9 @@ If the \verb{$initialize()} method has more arguments, then it is necessary to a
 This function should return either all objects, or a hash of all objects, that can change the function or behavior of the \code{PipeOp} and are independent
 of the class, the id, the \verb{$state}, and the \verb{$param_set$values}. The last point is particularly important: changing the \verb{$param_set$values} should
 \emph{not} change the return value of \code{private$.additional_phash_input()}.
+
+When you are implementing a \code{PipeOp} that operates a task (and is not a \code{\link{PipeOpTaskPreproc}}), you also need to handle the
+\verb{$internal_valid_task} field of the input task, if there is one.
 }
 
 \examples{

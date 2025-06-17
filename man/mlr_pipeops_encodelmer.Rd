@@ -10,7 +10,7 @@
 \description{
 Encodes columns of type \code{factor}, \code{character} and \code{ordered}.
 
-PipeOpEncodeLmer() converts factor levels of each factorial column to the
+\code{PipeOpEncodeLmer} converts factor levels of each factorial column to the
 estimated coefficients of a simple random intercept model.
 Models are fitted with the glmer function of the lme4 package and are
 of the type \code{target ~ 1 + (1 | factor)}.
@@ -49,7 +49,8 @@ otherwise be set during construction. Default \code{list()}.
 
 \section{Input and Output Channels}{
 
-Input and output channels are inherited from \code{\link{PipeOpTaskPreproc}}.
+Input and output channels are inherited from \code{\link{PipeOpTaskPreproc}}. Instead of a \code{\link[mlr3:Task]{Task}}, a
+\code{\link[mlr3:TaskSupervised]{TaskSupervised}} is used as input and output during training and prediction.
 
 The output is the input \code{\link[mlr3:Task]{Task}} with all affected \code{factor}, \code{character} or
 \code{ordered} parameters encoded according to the \code{method} parameter.
@@ -62,7 +63,7 @@ The \verb{$state} is a named \code{list} with the \verb{$state} elements inherit
 \item \code{target_levels} :: \code{character}\cr
 Levels of the target columns.
 \item \code{control} :: a named \code{list}\cr
-List of coefficients learned via \code{glmer}
+List of coefficients learned via \code{glmer}.
 }
 }
 

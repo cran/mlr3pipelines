@@ -19,10 +19,10 @@
 #' PipeOpLearner$new(learner, id = NULL, param_vals = list())
 #' ```
 #'
-#' * `learner` :: [`Learner`][mlr3::Learner] | `character(1)`
+#' * `learner` :: [`Learner`][mlr3::Learner] | `character(1)`\cr
 #'   [`Learner`][mlr3::Learner] to wrap, or a string identifying a [`Learner`][mlr3::Learner] in the [`mlr3::mlr_learners`] [`Dictionary`][mlr3misc::Dictionary].
 #'  This argument is always cloned; to access the [`Learner`][mlr3::Learner] inside `PipeOpLearner` by-reference, use `$learner`.\cr
-#' * `id` :: `character(1)`
+#' * `id` :: `character(1)`\cr
 #'   Identifier of the resulting  object, internally defaulting to the `id` of the [`Learner`][mlr3::Learner] being wrapped.
 #' * `param_vals` :: named `list`\cr
 #'   List of hyperparameter settings, overwriting the hyperparameter settings that would otherwise be set during construction. Default `list()`.
@@ -98,7 +98,7 @@ PipeOpLearner = R6Class("PipeOpLearner", inherit = PipeOp,
       id = id %??% private$.learner$id
       if (!test_po_validate(get0("validate", private$.learner))) {
         stopf(
-          "Validate field of PipeOp '%s' must either be NULL or 'predefined'.\nTo configure how the validation data is created, set the $validate field of the GraphLearner, e.g. using set_validate().",  # nolint
+          "Validate field of PipeOp '%s' must either be NULL or 'predefined'. We recommend specifying the validation data by calling set_validate(<glrn>, validate = <value>) on a GraphLearner. You can read more about this here: https://mlr3book.mlr-org.com/chapters/chapter15/predsets_valid_inttune.html.",  # nolint
           id
         )
       }
@@ -154,11 +154,9 @@ PipeOpLearner = R6Class("PipeOpLearner", inherit = PipeOp,
         }
         validate = get0("validate", private$.learner)
         if (!test_po_validate(validate)) {
-          warningf(paste(sep = "\n",
-            "PipeOpLearner '%s' has its validate field set to a value that is neither NULL nor 'predefined'.",
-            "This will likely lead to unexpected behaviour.",
-            "Configure the $validate field of the GraphLearner to define how the validation data is created."
-            ), self$id)
+          warningf(
+            "PipeOpLearner '%s' has its validate field set to a value that is neither NULL nor 'predefined'. This will likely lead to unexpected behaviour. We recommend configuring the validation data by calling set_validate(<glrn>, validate = <value>) on a GraphLearner. You can read more about this here: https://mlr3book.mlr-org.com/chapters/chapter15/predsets_valid_inttune.html", # nolint
+            self$id)
         }
       }
       private$.learner
@@ -206,6 +204,10 @@ PipeOpLearner = R6Class("PipeOpLearner", inherit = PipeOp,
 
 mlr_pipeops$add("learner", PipeOpLearner, list(R6Class("Learner", public = list(properties = character(0), id = "learner", task_type = "classif", param_set = ps(), packages = "mlr3pipelines"))$new())) # nolint
 
+# Q: Why do we have two different paths for setting $validate, the set_validate() and the `$validate` AB?
+# A: `$validate` is lower level machinery. `set_validate()` has optional arguments, e.g. `ids = ...`.
+#    `set_validate.PipeOpLearner` might be called by `set_validate.GraphLearner` and allows passing down
+#    further arguments in case the pipeoplearner was another graph learner e.g.
 #' @export
 set_validate.PipeOpLearner = function(learner, validate, ...) {
   assert_po_validate(validate)

@@ -188,7 +188,7 @@
 #'   should not modify the `PipeOp` in any way.\cr
 #'
 #' @section Inheriting:
-#' To create your own `PipeOp`, you need to overload the `private$.train()` and `private$.test()` functions.
+#' To create your own `PipeOp`, you need to overload the `private$.train()` and `private$.predict()` functions.
 #' It is most likely also necessary to overload the `$initialize()` function to do additional initialization.
 #' The `$initialize()` method should have at least the arguments `id` and `param_vals`, which should be passed on to `super$initialize()` unchanged.
 #' `id` should have a useful default value, and `param_vals` should have the default value `list()`, meaning no initialization of hyperparameters.
@@ -197,6 +197,9 @@
 #' This function should return either all objects, or a hash of all objects, that can change the function or behavior of the `PipeOp` and are independent
 #' of the class, the id, the `$state`, and the `$param_set$values`. The last point is particularly important: changing the `$param_set$values` should
 #' *not* change the return value of `private$.additional_phash_input()`.
+#'
+#' When you are implementing a `PipeOp` that operates a task (and is not a [`PipeOpTaskPreproc`]), you also need to handle the
+#' `$internal_valid_task` field of the input task, if there is one.
 #'
 #' @examples
 #' # example (bogus) PipeOp that returns the sum of two numbers during $train()
@@ -324,6 +327,10 @@ PipeOp = R6Class("PipeOp",
     },
     predict = function(input) {
       assert_list(input, .var.name = sprintf("input to PipeOp %s's $predict()", self$id))
+
+      if (!self$is_trained) {
+        stopf("Cannot predict, PipeOp '%s' has not been trained yet", self$id)
+      }
 
       # need to load packages in train *and* predict, because they might run in different R instances
       require_namespaces(self$packages)

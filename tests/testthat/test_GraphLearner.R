@@ -10,6 +10,9 @@ test_that("basic graphlearner tests", {
 
   glrn = GraphLearner$new(gr)
   glrn$properties = setdiff(glrn$properties, "weights")  # FIXME: workaround until weights handling does not need to be part of the paramset
+  if ("use_weights" %in% names(glrn)) {  # FIXME: condition can be removed when mlr3 weights update, mlr3-org/mlr3#1124 is on CRAN
+    glrn$use_weights = "error"  # also need to update use_weights now
+  }
   expect_true(run_experiment(task, glrn)$ok)
   glrn$properties = c(glrn$properties, "weights")
 
@@ -40,8 +43,14 @@ test_that("basic graphlearner tests", {
   glrn2_clone = glrn2$clone(deep = TRUE)
   expect_learner(glrn2)
   glrn2$properties = setdiff(glrn2$properties, "weights")  # FIXME: see above
+  if ("use_weights" %in% names(glrn2)) {  # FIXME: see above
+    glrn2$use_weights = "error"  # see above
+  }
   expect_true(run_experiment(task, glrn2)$ok)
-  glrn2$properties = c(glrn2$properties, "weights")
+  glrn2$properties = c(glrn2$properties, "weights")  # reset changes
+  if ("use_weights" %in% names(glrn2)) {  # FIXME: see above
+    glrn2$use_weights = "use"  # reset changes
+  }
   glrn2$train(task)
   glrn2_clone$state = glrn2$state
 #  glrn2_clone$state$log = glrn2_clone$state$log$clone(deep = TRUE)  # FIXME: this can go when mlr-org/mlr3#343 is fixed
@@ -929,6 +938,7 @@ test_that("GraphLearner hashes", {
 })
 
 test_that("validation, internal_valid_scores", {
+  skip_if_not_installed("rpart")
   expect_error(as_pipeop(lrn("classif.debug", validate = 0.3)), "must either be")
   # None of the Learners can do validation -> NULL
   glrn1 = as_learner(as_graph(lrn("classif.rpart")))$train(tsk("iris"))
@@ -957,6 +967,7 @@ test_that("validation, internal_valid_scores", {
 })
 
 test_that("internal_tuned_values", {
+  skip_if_not_installed("rpart")
   # no internal tuning support -> NULL
   task = tsk("iris")
   glrn1 = as_learner(as_graph(lrn("classif.rpart")))$train(task)
@@ -1065,6 +1076,7 @@ test_that("marshal", {
 })
 
 test_that("marshal has no effect when nothing needed marshaling", {
+  skip_if_not_installed("rpart")
   task = tsk("iris")
   glrn = as_learner(as_graph(lrn("classif.rpart")))
   glrn$train(task)

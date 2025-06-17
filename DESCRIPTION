@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.7.2
+Version: 0.8.0
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -57,14 +57,14 @@ License: LGPL-3
 URL: https://mlr3pipelines.mlr-org.com,
         https://github.com/mlr-org/mlr3pipelines
 BugReports: https://github.com/mlr-org/mlr3pipelines/issues
-Depends: R (>= 3.1.0)
+Depends: R (>= 3.3.0)
 Imports: backports, checkmate, data.table, digest, lgr, mlr3 (>=
-        0.20.0), mlr3misc (>= 0.16.0), paradox, R6, withr
+        0.20.0), mlr3misc (>= 0.17.0), paradox, R6, withr
 Suggests: ggplot2, glmnet, igraph, knitr, lme4, mlbench, bbotk (>=
         0.3.0), mlr3filters (>= 0.8.1), mlr3learners, mlr3measures,
         nloptr, quanteda, rmarkdown, rpart, stopwords, testthat,
         visNetwork, bestNormalize, fastICA, kernlab, smotefamily,
-        evaluate, NMF, MASS, kknn, GenSA, methods, vtreat, future,
+        evaluate, NMF, MASS, GenSA, methods, vtreat, future,
         htmlwidgets, ranger, themis
 ByteCompile: true
 Encoding: UTF-8
@@ -72,7 +72,7 @@ Config/testthat/edition: 3
 Config/testthat/parallel: true
 NeedsCompilation: no
 RoxygenNote: 7.3.2
-VignetteBuilder: knitr
+VignetteBuilder: knitr, rmarkdown
 Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
         'CnfFormula_simplify.R' 'CnfSymbol.R' 'CnfUniverse.R' 'Graph.R'
         'GraphLearner.R' 'mlr_pipeops.R' 'multiplicity.R' 'utils.R'
@@ -109,18 +109,21 @@ Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
         'pipeline_branch.R' 'pipeline_convert_types.R'
         'pipeline_greplicate.R' 'pipeline_ovr.R' 'pipeline_robustify.R'
         'pipeline_stacking.R' 'pipeline_targettrafo.R' 'po.R' 'ppl.R'
-        'reexports.R' 'typecheck.R' 'zzz.R'
-Packaged: 2025-03-07 15:50:23 UTC; user
+        'preproc.R' 'reexports.R' 'typecheck.R' 'zzz.R'
+Packaged: 2025-06-16 16:30:35 UTC; user
 Author: Martin Binder [aut, cre],
-  Florian Pfisterer [aut] (<https://orcid.org/0000-0001-8867-762X>),
-  Lennart Schneider [aut] (<https://orcid.org/0000-0003-4152-5308>),
-  Bernd Bischl [aut] (<https://orcid.org/0000-0001-6002-6980>),
-  Michel Lang [aut] (<https://orcid.org/0000-0001-9754-0393>),
-  Sebastian Fischer [aut] (<https://orcid.org/0000-0002-9609-3197>),
+  Florian Pfisterer [aut] (ORCID:
+    <https://orcid.org/0000-0001-8867-762X>),
+  Lennart Schneider [aut] (ORCID:
+    <https://orcid.org/0000-0003-4152-5308>),
+  Bernd Bischl [aut] (ORCID: <https://orcid.org/0000-0001-6002-6980>),
+  Michel Lang [aut] (ORCID: <https://orcid.org/0000-0001-9754-0393>),
+  Sebastian Fischer [aut] (ORCID:
+    <https://orcid.org/0000-0002-9609-3197>),
   Susanne Dandl [aut],
   Keno Mersmann [ctb],
-  Maximilian Mücke [ctb] (<https://orcid.org/0009-0000-9432-9795>),
+  Maximilian Mücke [ctb] (ORCID: <https://orcid.org/0009-0000-9432-9795>),
   Lona Koers [ctb]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2025-03-07 18:10:02 UTC
+Date/Publication: 2025-06-17 07:30:02 UTC
