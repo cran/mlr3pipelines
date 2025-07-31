@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.8.0
+Version: 0.9.0
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -59,7 +59,7 @@ URL: https://mlr3pipelines.mlr-org.com,
 BugReports: https://github.com/mlr-org/mlr3pipelines/issues
 Depends: R (>= 3.3.0)
 Imports: backports, checkmate, data.table, digest, lgr, mlr3 (>=
-        0.20.0), mlr3misc (>= 0.17.0), paradox, R6, withr
+        0.20.0), mlr3misc (>= 0.17.0), paradox (>= 1.0.0), R6, withr
 Suggests: ggplot2, glmnet, igraph, knitr, lme4, mlbench, bbotk (>=
         0.3.0), mlr3filters (>= 0.8.1), mlr3learners, mlr3measures,
         nloptr, quanteda, rmarkdown, rpart, stopwords, testthat,
@@ -110,7 +110,7 @@ Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
         'pipeline_greplicate.R' 'pipeline_ovr.R' 'pipeline_robustify.R'
         'pipeline_stacking.R' 'pipeline_targettrafo.R' 'po.R' 'ppl.R'
         'preproc.R' 'reexports.R' 'typecheck.R' 'zzz.R'
-Packaged: 2025-06-16 16:30:35 UTC; user
+Packaged: 2025-07-31 14:15:06 UTC; user
 Author: Martin Binder [aut, cre],
   Florian Pfisterer [aut] (ORCID:
     <https://orcid.org/0000-0001-8867-762X>),
@@ -126,4 +126,4 @@ Author: Martin Binder [aut, cre],
   Lona Koers [ctb]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2025-06-17 07:30:02 UTC
+Date/Publication: 2025-07-31 23:20:11 UTC
