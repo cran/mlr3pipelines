@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.9.0
+Version: 0.10.0
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -47,7 +47,11 @@ Authors@R:
       person(given = "Lona",
              family = "Koers",
              role = "ctb",
-             email = "lona.koers@gmail.com"))
+             email = "lona.koers@gmail.com"),
+      person(given = "Alexander",
+             family = "Winterstetter",
+             role = "ctb",
+             email = "alexander.winterstetter@gmail.com"))
 Description: Dataflow programming toolkit that enriches 'mlr3' with a diverse
   set of pipelining operators ('PipeOps') that can be composed into graphs.
   Operations exist for data preprocessing, model fitting, and ensemble
@@ -57,29 +61,29 @@ License: LGPL-3
 URL: https://mlr3pipelines.mlr-org.com,
         https://github.com/mlr-org/mlr3pipelines
 BugReports: https://github.com/mlr-org/mlr3pipelines/issues
-Depends: R (>= 3.3.0)
-Imports: backports, checkmate, data.table, digest, lgr, mlr3 (>=
-        0.20.0), mlr3misc (>= 0.17.0), paradox (>= 1.0.0), R6, withr
+Depends: R (>= 4.1.0)
+Imports: backports, checkmate, cli, data.table, digest, lgr, mlr3 (>=
+        0.20.0), mlr3misc (>= 0.17.0), paradox (>= 1.0.0), R6
 Suggests: ggplot2, glmnet, igraph, knitr, lme4, mlbench, bbotk (>=
         0.3.0), mlr3filters (>= 0.8.1), mlr3learners, mlr3measures,
         nloptr, quanteda, rmarkdown, rpart, stopwords, testthat,
         visNetwork, bestNormalize, fastICA, kernlab, smotefamily,
         evaluate, NMF, MASS, GenSA, methods, vtreat, future,
-        htmlwidgets, ranger, themis
+        htmlwidgets, ranger, themis, dimRed, RSpectra, RANN
 ByteCompile: true
 Encoding: UTF-8
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 NeedsCompilation: no
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 VignetteBuilder: knitr, rmarkdown
 Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
-        'CnfFormula_simplify.R' 'CnfSymbol.R' 'CnfUniverse.R' 'Graph.R'
-        'GraphLearner.R' 'mlr_pipeops.R' 'multiplicity.R' 'utils.R'
-        'PipeOp.R' 'PipeOpEnsemble.R' 'LearnerAvg.R' 'NO_OP.R'
-        'PipeOpTaskPreproc.R' 'PipeOpADAS.R' 'PipeOpBLSmote.R'
-        'PipeOpBoxCox.R' 'PipeOpBranch.R' 'PipeOpChunk.R'
-        'PipeOpClassBalancing.R' 'PipeOpClassWeights.R'
+        'CnfFormula_simplify.R' 'CnfSymbol.R' 'CnfUniverse.R'
+        'FilterEnsemble.R' 'Graph.R' 'GraphLearner.R' 'mlr_pipeops.R'
+        'multiplicity.R' 'utils.R' 'PipeOp.R' 'PipeOpEnsemble.R'
+        'LearnerAvg.R' 'NO_OP.R' 'PipeOpTaskPreproc.R' 'PipeOpADAS.R'
+        'PipeOpBLSmote.R' 'PipeOpBoxCox.R' 'PipeOpBranch.R'
+        'PipeOpChunk.R' 'PipeOpClassBalancing.R' 'PipeOpClassWeights.R'
         'PipeOpClassifAvg.R' 'PipeOpColApply.R' 'PipeOpColRoles.R'
         'PipeOpCollapseFactors.R' 'PipeOpCopy.R' 'PipeOpDateFeatures.R'
         'PipeOpDecode.R' 'PipeOpEncode.R' 'PipeOpEncodeImpact.R'
@@ -89,12 +93,12 @@ Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
         'PipeOpImputeHist.R' 'PipeOpImputeLearner.R'
         'PipeOpImputeMean.R' 'PipeOpImputeMedian.R'
         'PipeOpImputeMode.R' 'PipeOpImputeOOR.R' 'PipeOpImputeSample.R'
-        'PipeOpKernelPCA.R' 'PipeOpLearner.R' 'PipeOpLearnerCV.R'
-        'PipeOpLearnerPICVPlus.R' 'PipeOpLearnerQuantiles.R'
-        'PipeOpMissingIndicators.R' 'PipeOpModelMatrix.R'
-        'PipeOpMultiplicity.R' 'PipeOpMutate.R' 'PipeOpNMF.R'
-        'PipeOpNOP.R' 'PipeOpNearmiss.R' 'PipeOpOVR.R' 'PipeOpPCA.R'
-        'PipeOpProxy.R' 'PipeOpQuantileBin.R'
+        'PipeOpInfo.R' 'PipeOpIsomap.R' 'PipeOpKernelPCA.R'
+        'PipeOpLearner.R' 'PipeOpLearnerCV.R' 'PipeOpLearnerPICVPlus.R'
+        'PipeOpLearnerQuantiles.R' 'PipeOpMissingIndicators.R'
+        'PipeOpModelMatrix.R' 'PipeOpMultiplicity.R' 'PipeOpMutate.R'
+        'PipeOpNMF.R' 'PipeOpNOP.R' 'PipeOpNearmiss.R' 'PipeOpOVR.R'
+        'PipeOpPCA.R' 'PipeOpProxy.R' 'PipeOpQuantileBin.R'
         'PipeOpRandomProjection.R' 'PipeOpRandomResponse.R'
         'PipeOpRegrAvg.R' 'PipeOpRemoveConstants.R'
         'PipeOpRenameColumns.R' 'PipeOpRowApply.R' 'PipeOpScale.R'
@@ -110,7 +114,7 @@ Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
         'pipeline_greplicate.R' 'pipeline_ovr.R' 'pipeline_robustify.R'
         'pipeline_stacking.R' 'pipeline_targettrafo.R' 'po.R' 'ppl.R'
         'preproc.R' 'reexports.R' 'typecheck.R' 'zzz.R'
-Packaged: 2025-07-31 14:15:06 UTC; user
+Packaged: 2025-11-07 00:15:02 UTC; user
 Author: Martin Binder [aut, cre],
   Florian Pfisterer [aut] (ORCID:
     <https://orcid.org/0000-0001-8867-762X>),
@@ -123,7 +127,8 @@ Author: Martin Binder [aut, cre],
   Susanne Dandl [aut],
   Keno Mersmann [ctb],
   Maximilian Mücke [ctb] (ORCID: <https://orcid.org/0009-0000-9432-9795>),
-  Lona Koers [ctb]
+  Lona Koers [ctb],
+  Alexander Winterstetter [ctb]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2025-07-31 23:20:11 UTC
+Date/Publication: 2025-11-07 06:10:08 UTC

@@ -525,16 +525,19 @@ graph, and see what happens when we train it on something:</p>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>gr<span class="sc">$</span><span class="fu">add_pipeop</span>(poct)</span>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="fu">print</span>(gr)</span></code></pre></div>
-<pre><code>## Graph with 1 PipeOps:
+<pre><code>## 
+## ── Graph with 1 PipeOps: ───────────────────────────────────────────────────────
 ##        ID         State sccssors prdcssors
 ##    &lt;char&gt;        &lt;char&gt;   &lt;char&gt;    &lt;char&gt;
-##  copy.two &lt;&lt;UNTRAINED&gt;&gt;</code></pre>
+##  copy.two &lt;&lt;UNTRAINED&gt;&gt;                   
+## 
+## ── Pipeline: &lt;INPUT&gt; -&gt; copy.two -&gt; &lt;OUTPUT&gt;</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>result <span class="ot">=</span> gr<span class="sc">$</span><span class="fu">train</span>(task)</span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">str</span>(result)</span></code></pre></div>
 <pre><code>## List of 2
-##  $ copy.two.output1:Classes &#39;TaskClassif&#39;, &#39;TaskSupervised&#39;, &#39;Task&#39;, &#39;R6&#39; &lt;TaskClassif:iris&gt; 
-##  $ copy.two.output2:Classes &#39;TaskClassif&#39;, &#39;TaskSupervised&#39;, &#39;Task&#39;, &#39;R6&#39; &lt;TaskClassif:iris&gt;</code></pre>
+##  $ copy.two.output1:Classes &#39;TaskClassif&#39;, &#39;TaskSupervised&#39;, &#39;Task&#39;, &#39;Mlr3Component&#39;, &#39;R6&#39; &lt;TaskClassif:iris&gt; 
+##  $ copy.two.output2:Classes &#39;TaskClassif&#39;, &#39;TaskSupervised&#39;, &#39;Task&#39;, &#39;Mlr3Component&#39;, &#39;R6&#39; &lt;TaskClassif:iris&gt;</code></pre>
 </div>
 </div>
 <div id="ext-pipe-preproc" class="section level3">
