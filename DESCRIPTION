@@ -1,6 +1,6 @@
 Package: mlr3pipelines
 Title: Preprocessing Operators and Pipelines for 'mlr3'
-Version: 0.10.0
+Version: 0.11.0
 Authors@R: 
     c(person(given = "Martin",
              family = "Binder",
@@ -69,7 +69,7 @@ Suggests: ggplot2, glmnet, igraph, knitr, lme4, mlbench, bbotk (>=
         nloptr, quanteda, rmarkdown, rpart, stopwords, testthat,
         visNetwork, bestNormalize, fastICA, kernlab, smotefamily,
         evaluate, NMF, MASS, GenSA, methods, vtreat, future,
-        htmlwidgets, ranger, themis, dimRed, RSpectra, RANN
+        htmlwidgets, ranger, themis, splines, dimRed, RSpectra, RANN
 ByteCompile: true
 Encoding: UTF-8
 Config/testthat/edition: 3
@@ -84,27 +84,28 @@ Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
         'LearnerAvg.R' 'NO_OP.R' 'PipeOpTaskPreproc.R' 'PipeOpADAS.R'
         'PipeOpBLSmote.R' 'PipeOpBoxCox.R' 'PipeOpBranch.R'
         'PipeOpChunk.R' 'PipeOpClassBalancing.R' 'PipeOpClassWeights.R'
-        'PipeOpClassifAvg.R' 'PipeOpColApply.R' 'PipeOpColRoles.R'
-        'PipeOpCollapseFactors.R' 'PipeOpCopy.R' 'PipeOpDateFeatures.R'
-        'PipeOpDecode.R' 'PipeOpEncode.R' 'PipeOpEncodeImpact.R'
-        'PipeOpEncodeLmer.R' 'PipeOpEncodePL.R' 'PipeOpFeatureUnion.R'
-        'PipeOpFilter.R' 'PipeOpFixFactors.R' 'PipeOpHistBin.R'
-        'PipeOpICA.R' 'PipeOpImpute.R' 'PipeOpImputeConstant.R'
-        'PipeOpImputeHist.R' 'PipeOpImputeLearner.R'
-        'PipeOpImputeMean.R' 'PipeOpImputeMedian.R'
-        'PipeOpImputeMode.R' 'PipeOpImputeOOR.R' 'PipeOpImputeSample.R'
-        'PipeOpInfo.R' 'PipeOpIsomap.R' 'PipeOpKernelPCA.R'
-        'PipeOpLearner.R' 'PipeOpLearnerCV.R' 'PipeOpLearnerPICVPlus.R'
-        'PipeOpLearnerQuantiles.R' 'PipeOpMissingIndicators.R'
-        'PipeOpModelMatrix.R' 'PipeOpMultiplicity.R' 'PipeOpMutate.R'
-        'PipeOpNMF.R' 'PipeOpNOP.R' 'PipeOpNearmiss.R' 'PipeOpOVR.R'
-        'PipeOpPCA.R' 'PipeOpProxy.R' 'PipeOpQuantileBin.R'
+        'PipeOpClassWeightsEx.R' 'PipeOpClassifAvg.R'
+        'PipeOpColApply.R' 'PipeOpColRoles.R' 'PipeOpCollapseFactors.R'
+        'PipeOpCopy.R' 'PipeOpDateFeatures.R' 'PipeOpDecode.R'
+        'PipeOpEncode.R' 'PipeOpEncodeImpact.R' 'PipeOpEncodeLmer.R'
+        'PipeOpEncodePL.R' 'PipeOpFeatureUnion.R' 'PipeOpFilter.R'
+        'PipeOpFixFactors.R' 'PipeOpHistBin.R' 'PipeOpICA.R'
+        'PipeOpImpute.R' 'PipeOpImputeConstant.R' 'PipeOpImputeHist.R'
+        'PipeOpImputeLearner.R' 'PipeOpImputeMean.R'
+        'PipeOpImputeMedian.R' 'PipeOpImputeMode.R' 'PipeOpImputeOOR.R'
+        'PipeOpImputeSample.R' 'PipeOpInfo.R' 'PipeOpIsomap.R'
+        'PipeOpKernelPCA.R' 'PipeOpLearner.R' 'PipeOpLearnerCV.R'
+        'PipeOpLearnerPICVPlus.R' 'PipeOpLearnerQuantiles.R'
+        'PipeOpMissingIndicators.R' 'PipeOpModelMatrix.R'
+        'PipeOpMultiplicity.R' 'PipeOpMutate.R' 'PipeOpNMF.R'
+        'PipeOpNOP.R' 'PipeOpNearmiss.R' 'PipeOpOVR.R' 'PipeOpPCA.R'
+        'PipeOpProxy.R' 'PipeOpQuantileBin.R'
         'PipeOpRandomProjection.R' 'PipeOpRandomResponse.R'
         'PipeOpRegrAvg.R' 'PipeOpRemoveConstants.R'
         'PipeOpRenameColumns.R' 'PipeOpRowApply.R' 'PipeOpScale.R'
         'PipeOpScaleMaxAbs.R' 'PipeOpScaleRange.R' 'PipeOpSelect.R'
         'PipeOpSmote.R' 'PipeOpSmoteNC.R' 'PipeOpSpatialSign.R'
-        'PipeOpSubsample.R' 'PipeOpTextVectorizer.R'
+        'PipeOpSplines.R' 'PipeOpSubsample.R' 'PipeOpTextVectorizer.R'
         'PipeOpThreshold.R' 'PipeOpTomek.R' 'PipeOpTrafo.R'
         'PipeOpTuneThreshold.R' 'PipeOpUnbranch.R' 'PipeOpVtreat.R'
         'PipeOpYeoJohnson.R' 'Selector.R' 'TaskRegr_boston_housing.R'
@@ -114,7 +115,7 @@ Collate: 'CnfAtom.R' 'CnfClause.R' 'CnfFormula.R'
         'pipeline_greplicate.R' 'pipeline_ovr.R' 'pipeline_robustify.R'
         'pipeline_stacking.R' 'pipeline_targettrafo.R' 'po.R' 'ppl.R'
         'preproc.R' 'reexports.R' 'typecheck.R' 'zzz.R'
-Packaged: 2025-11-07 00:15:02 UTC; user
+Packaged: 2026-02-28 21:31:07 UTC; user
 Author: Martin Binder [aut, cre],
   Florian Pfisterer [aut] (ORCID:
     <https://orcid.org/0000-0001-8867-762X>),
@@ -131,4 +132,4 @@ Author: Martin Binder [aut, cre],
   Alexander Winterstetter [ctb]
 Maintainer: Martin Binder <mlr.developer@mb706.com>
 Repository: CRAN
-Date/Publication: 2025-11-07 06:10:08 UTC
+Date/Publication: 2026-03-01 06:10:21 UTC

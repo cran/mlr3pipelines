@@ -3,12 +3,12 @@
 \name{mlr_pipeops_imputemedian}
 \alias{mlr_pipeops_imputemedian}
 \alias{PipeOpImputeMedian}
-\title{Impute Numerical Features by their Median}
+\title{Impute Numeric, Integer, POSIXct or Date Features by their Median}
 \format{
 \code{\link[R6:R6Class]{R6Class}} object inheriting from \code{\link{PipeOpImpute}}/\code{\link{PipeOp}}.
 }
 \description{
-Impute numerical features by their median.
+Impute numerical, integer, POSIXct or Date features by their median.
 }
 \section{Construction}{
 
@@ -27,14 +27,14 @@ List of hyperparameter settings, overwriting the hyperparameter settings that wo
 
 Input and output channels are inherited from \code{\link{PipeOpImpute}}.
 
-The output is the input \code{\link[mlr3:Task]{Task}} with all affected numeric features missing values imputed by (column-wise) median.
+The output is the input \code{\link[mlr3:Task]{Task}} with all affected numeric, integer, POSIXct and Date features missing values imputed by (column-wise) median.
 }
 
 \section{State}{
 
 The \verb{$state} is a named \code{list} with the \verb{$state} elements inherited from \code{\link{PipeOpImpute}}.
 
-The \verb{$state$model} is a named \code{list} of \code{numeric(1)} indicating the median of the respective feature.
+The \verb{$state$model} is a named \code{list} of \code{numeric(1)}, \code{integer(1)}, \code{POSIXct(1)} or  \code{Date(1)} indicating the median of the respective feature.
 }
 
 \section{Parameters}{
@@ -89,6 +89,7 @@ Other PipeOps:
 \code{\link{mlr_pipeops_classbalancing}},
 \code{\link{mlr_pipeops_classifavg}},
 \code{\link{mlr_pipeops_classweights}},
+\code{\link{mlr_pipeops_classweightsex}},
 \code{\link{mlr_pipeops_colapply}},
 \code{\link{mlr_pipeops_collapsefactors}},
 \code{\link{mlr_pipeops_colroles}},
@@ -145,6 +146,7 @@ Other PipeOps:
 \code{\link{mlr_pipeops_smote}},
 \code{\link{mlr_pipeops_smotenc}},
 \code{\link{mlr_pipeops_spatialsign}},
+\code{\link{mlr_pipeops_splines}},
 \code{\link{mlr_pipeops_subsample}},
 \code{\link{mlr_pipeops_targetinvert}},
 \code{\link{mlr_pipeops_targetmutate}},
