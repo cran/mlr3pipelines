@@ -75,7 +75,7 @@ Methods inherited from \code{\link{PipeOpTaskPreprocSimple}}(\code{\link{PipeOpT
 library("mlr3")
 \dontshow{data.table::setDTthreads(1)}
 
-task = tsk("pima")$select(c("insulin", "triceps"))
+task = tsk("diabetes")$select(c("insulin", "triceps"))
 sum(complete.cases(task$data()))
 task$missings()
 tail(task$data())
@@ -97,7 +97,7 @@ tail(impgraph$train(task)[[1]]$data())
 \seealso{
 https://mlr-org.com/pipeops.html
 
-Other PipeOps: 
+Other PipeOps:
 \code{\link{PipeOp}},
 \code{\link{PipeOpEncodePL}},
 \code{\link{PipeOpEnsemble}},
@@ -145,6 +145,7 @@ Other PipeOps:
 \code{\link{mlr_pipeops_learner}},
 \code{\link{mlr_pipeops_learner_pi_cvplus}},
 \code{\link{mlr_pipeops_learner_quantiles}},
+\code{\link{mlr_pipeops_materialize}},
 \code{\link{mlr_pipeops_modelmatrix}},
 \code{\link{mlr_pipeops_multiplicityexply}},
 \code{\link{mlr_pipeops_multiplicityimply}},
